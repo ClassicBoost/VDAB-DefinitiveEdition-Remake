@@ -213,9 +213,13 @@ class PurTitleState extends MusicBeatState
 					MainMenuState.finishedFunnyMove = false;
 		
 					MainMenuState.firstStart = true;
+
+
+					FlxG.sound.playMusic(Paths.music(''), 0, true);
 	
 					new FlxTimer().start(1, function(tmr:FlxTimer)
 					{
+						FlxG.sound.playMusic(Paths.music('freakyMenu'), 0.7, true);
 						MusicBeatState.switchState(new TitleState());
 						closedState = true;
 						PurMainMenuState.sexo4 = false;

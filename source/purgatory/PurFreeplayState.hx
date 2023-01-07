@@ -41,6 +41,9 @@ class PurFreeplayState extends MusicBeatState
 	var lerpRating:Float = 0;
 	var intendedScore:Int = 0;
 	var intendedRating:Float = 0;
+	var diffText:FlxText;
+
+	public var songDiff:FlxSprite;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 	private var curPlaying:Bool = false;
@@ -201,13 +204,26 @@ class PurFreeplayState extends MusicBeatState
 		scoreText.x = 20;
 		scoreText.y = -60;
 
+		songDiff = new FlxSprite(0, scoreText.y + 200);
+		songDiff.frames = Paths.getSparrowAtlas('song_difficulties');
+		songDiff.animation.addByPrefix('easy', 'easy0', 1, true);
+		songDiff.animation.addByPrefix('normal', 'normal0', 1, true);
+		songDiff.animation.addByPrefix('hard', 'hard0', 1, true);
+		songDiff.animation.addByPrefix('hell', 'hell0', 1, true);
+		songDiff.animation.addByPrefix('auto', 'auto0', 1, true);
+		songDiff.x = 1000;
+		songDiff.y = 700;
+		songDiff.setGraphicSize(Std.int(songDiff.width * 0.7));
+		songDiff.antialiasing = ClientPrefs.globalAntialiasing;
+		add(songDiff);
+
 		var scoreBG:FlxSprite = new FlxSprite(scoreText.x - 6, 0).makeGraphic(Std.int(FlxG.width * 1), 66, 0xFF000000);
 		scoreBG.alpha = 0.5;
 		scoreBG.screenCenter(X);
 		scoreBG.y = -40;
 		add(scoreBG);
 
-		var diffText:FlxText = new FlxText(scoreText.x -10, scoreText.y + 30, 0, "", 24);
+		diffText = new FlxText(scoreText.x -10, scoreText.y + 30, 0, "", 24);
 		diffText.font = scoreText.font;
 		diffText.x = 20;
 		diffText.y = -40;
@@ -239,6 +255,8 @@ class PurFreeplayState extends MusicBeatState
 
 		FlxTween.tween(scoreBG,{y: 25},0.5,{ease: FlxEase.expoInOut});
 		FlxTween.tween(scoreText,{y: 20},0.5,{ease: FlxEase.expoInOut});
+		FlxTween.tween(diffText,{y: 55},0.5,{ease: FlxEase.expoInOut});
+		FlxTween.tween(songDiff,{y: 500},0.5,{ease: FlxEase.expoInOut});
 
 		changeSelection();
 		changeDiff();
@@ -331,6 +349,40 @@ class PurFreeplayState extends MusicBeatState
 			}
 		
 			return;
+		}
+
+		if (CurrentPack == 0) {
+			switch (curSelected) {
+				case 7,8,9,10:
+				songDiff.animation.play('easy', true);
+				case 0,1,5,6,11:
+				songDiff.animation.play('normal', true);
+				case 2,3,4,12:
+				songDiff.animation.play('hard', true);
+			}
+		}
+		if (CurrentPack == 1) {
+			switch (curSelected) {
+				case 1:
+				songDiff.animation.play('easy', true);
+				case 0,2:
+				songDiff.animation.play('normal', true);
+				case 3:
+				songDiff.animation.play('hard', true);
+				case 4:
+				songDiff.animation.play('hell', true);
+			}
+		}
+		if (CurrentPack == 2) {
+			switch (curSelected) {
+				case 0,2:
+				songDiff.animation.play('normal', true);
+				case 1:
+				songDiff.animation.play('hard', true);
+			}
+		}
+		if (CurrentPack == 3) {
+			songDiff.animation.play('auto', true);
 		}
 
 		if (FlxG.sound.music.volume < 0.7)

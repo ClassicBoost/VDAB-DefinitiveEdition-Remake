@@ -105,6 +105,9 @@ class PlayState extends MusicBeatState
 	public var modchartSaves:Map<String, FlxSave> = new Map<String, FlxSave>();
 
 	public var engineBar:FlxText;
+
+	public var cheatingModchart:Bool = false;
+	public var unfairModchart:Bool = false;
 	
 	public var shader_chromatic_abberation:ChromaticAberrationEffect;
 	public var scanline_shader:ScanlineEffect;
@@ -291,6 +294,8 @@ class PlayState extends MusicBeatState
 	private var autoCamZoom:Bool = true;
 
 	public var isNormalStart:Bool = true;
+
+	public var forceDisableGhost:Bool = false;
 
 	private var generatedMusic:Bool = false;
 	public var endingSong:Bool = false;
@@ -595,6 +600,10 @@ class PlayState extends MusicBeatState
 		// String for when the game is paused
 		detailsPausedText = "Paused - " + detailsText;
 		#end
+
+		cheatingModchart = false;
+		unfairModchart = false;
+		forceDisableGhost = false;
 
 		GameOverSubstate.resetVariables();
 		var songName:String = Paths.formatToSongPath(SONG.song);
@@ -4323,7 +4332,7 @@ class PlayState extends MusicBeatState
 		boyfriend.y += (Math.sin(elapsedtime) * 0.6);
 	}
 
-	if (SONG.song.toLowerCase() == 'cheating') // fuck you
+	if (SONG.song.toLowerCase() == 'cheating' || cheatingModchart) // fuck you
 		{
 			playerStrums.forEach(function(spr:FlxSprite)
 			{
@@ -4439,7 +4448,7 @@ class PlayState extends MusicBeatState
 				}
 			#end
 		}
-	if (SONG.song.toLowerCase() == 'unfairness') // fuck you x2
+	if (SONG.song.toLowerCase() == 'unfairness' || unfairModchart) // fuck you x2
 			{
 				playerStrums.forEach(function(spr:FlxSprite)
 				{
@@ -7631,7 +7640,7 @@ class PlayState extends MusicBeatState
 						}
 						canMiss = false; // turn this shit from true to false to turn off that STUPID UGLy anti mash
 					}
-				    if(SONG.song.toLowerCase() == "unfairness")
+				    if(SONG.song.toLowerCase() == "unfairness" || forceDisableGhost)
 					{
 						canMiss = true; // cry about it
 					}
