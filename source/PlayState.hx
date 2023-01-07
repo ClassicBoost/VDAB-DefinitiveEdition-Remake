@@ -2154,7 +2154,7 @@ class PlayState extends MusicBeatState
 			case 9:
 				engineName = 'Jeff '; 
 			case 10:
-				engineName = 'Psych Forever';
+				engineName = 'Psych Forever ';
 		/*	case 10:
 				engineName = 'Ringi ';*/
 		/*	case 11:
@@ -2177,7 +2177,7 @@ class PlayState extends MusicBeatState
 		var engineDisplay:String = '${(isPixelStage == true ? "v4.1.1" : isPixelStage == false ? engineName + "Engine Legacy v4.1.1" + " (PE v" + MainMenuState.psychEngineVersion + ")" : "")}';
 
 		engineBar = new FlxText(0, 0, 0, engineDisplay); // make it go on the top right, like in Forever Engine 0.3.1
-		engineBar.setFormat(Paths.font("vcr.ttf"), 18, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		engineBar.setFormat(Paths.font("comic-sans.ttf"), 18, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		engineBar.updateHitbox();
 		engineBar.x = FlxG.width - engineBar.width - 5;
 		engineBar.visible = !ClientPrefs.hideHud;
@@ -7290,7 +7290,7 @@ class PlayState extends MusicBeatState
 			}
 
 			if(is3DStage) {
-				rating.loadGraphic(Paths.image(polyShitPart1 + daRating + polyShitPart2));
+				rating.loadGraphic(Paths.image(polyShitPart1 + (allSicks == true ? 'sick-perfect' : allSicks == false ? daRating : "") + polyShitPart2));
 			} else {
 				rating.loadGraphic(Paths.image('judgements/' + pixelShitPart1 + (allSicks == true ? 'sick-perfect' : allSicks == false ? daRating : "") + daTiming + pixelShitPart2));
 			}
@@ -7440,7 +7440,7 @@ class PlayState extends MusicBeatState
 					}
 	
 				if(is3DStage) {
-			    	numScore.loadGraphic(Paths.image(polyShitPart1 + 'num' + Std.int(i) + polyShitPart2));
+			    	numScore.loadGraphic(Paths.image(polyShitPart1 + (allSicks == true ? 'golden/' : allSicks == false ? '' : "") + 'num' + Std.int(i) + polyShitPart2));
 				    numScore.screenCenter();
 		     		numScore.x = coolText.x + (43 * daLoop) - 90;
 			    	numScore.y += 80;

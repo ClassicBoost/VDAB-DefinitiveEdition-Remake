@@ -1,0 +1,60 @@
+{
+	"song": {
+		"speed": 3.1,
+		"stage": null,
+		"player1": "bf",
+		"player2": "dave-splitathon",
+		"player3": null,
+		"events": [
+			[
+				313043.47826087,
+				[
+					[
+						"Change Character",
+						"dad",
+						"bambi-splitathon"
+					]
+				]
+			],
+			[
+				379826.086956523,
+				[
+					[
+						"Change Character",
+						"dad",
+						"dave-splitathon"
+					]
+				]
+			],
+			[
+				396521.739130436,
+				[
+					[
+						"Change Character",
+						"dad",
+						"bambi-splitathon"
+					]
+				]
+			],
+			[
+				546782.608695652,
+				[
+					[
+						"Change Character",
+						"dad",
+						"dave-splitathon"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 230,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"isSkinSep": null,
+		"song": "Old-Splitathon"
+	}
+}

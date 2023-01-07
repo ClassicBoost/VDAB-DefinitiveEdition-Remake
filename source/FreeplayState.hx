@@ -216,7 +216,7 @@ class FreeplayState extends MusicBeatState
 		diffText.font = scoreText.font;
 		diffText.x = 20;
 		diffText.y = -40;
-	//	add(diffText);
+		add(diffText);
 
 		add(scoreText);
 
@@ -394,7 +394,8 @@ class FreeplayState extends MusicBeatState
 				PlayState.storyDifficulty = curDifficulty;
 			
 				PlayState.storyWeek = songs[curSelected].week;
-				LoadingState.loadAndSwitchState(new CharacterSelectState());
+				if (FlxG.keys.pressed.SHIFT) LoadingState.loadAndSwitchState(new PlayState());
+				else LoadingState.loadAndSwitchState(new CharacterSelectState());
 			}
 		}
 		if(ctrl)
@@ -450,7 +451,8 @@ class FreeplayState extends MusicBeatState
 		trace('CURRENT WEEK: ' + WeekData.getWeekFileName());
 		CharacterSelectionState.characterFile = 'bf';
 		CharacterSelectionState.scoreMultipliers = [1, 1, 1, 1];
-		LoadingState.loadAndSwitchState(new CharacterSelectionState());
+		if (FlxG.keys.pressed.SHIFT) LoadingState.loadAndSwitchState(new PlayState());
+		else LoadingState.loadAndSwitchState(new CharacterSelectionState());
 
 		FlxG.sound.music.volume = 0;
 				
@@ -490,7 +492,7 @@ public static function destroyFreeplayVocals() {
 		#end
 	
 		PlayState.storyDifficulty = curDifficulty;
-		diffText.text = '';
+		diffText.text = 'Hold shift to skip character selection';
 	}
 
 	function changeSelection(change:Int = 0)

@@ -55,7 +55,7 @@ class PurFreeplayState extends MusicBeatState
 
 	private var CurrentSongIcon:FlxSprite;
 
-	private var AllPossibleSongs:Array<String> = ["purgatory", "extrasandfanmades", "mods"];
+	private var AllPossibleSongs:Array<String> = ["purgatory", "extrasandfanmades", "old", "mods"];
 
 	private var CurrentPack:Int = 0;
 
@@ -131,14 +131,17 @@ class PurFreeplayState extends MusicBeatState
 				//	addWeek(['Antagonism'], 4, ['ohfuck']);
 				case 'extrasandfanmades':
 					addWeek(['Fast-Food'], 2, ['homo']);
-					addWeek(['Supplanted-OLD'], 2, ['bambiRage']);
-					addWeek(['OLD-Rebound'], 2, ['bambiGod']);
+
 					addWeek(['bombu-x-bamburg-shipping-cute'], 2, ['homo']);
 					addWeek(['sunshine'], 2, ['bandu']);
 					//	#if !debug
 				///	if(FlxG.save.data.idkFound)
 				///	#end
 				    	addWeek(['LACUNA'], 4, ['dataexpunged']);
+				case 'old':
+					addWeek(['Supplanted-OLD'], 2, ['bambiRage']);
+					addWeek(['OLD-Rebound'], 2, ['bambiGod']);
+					addWeek(['Fast-Food-OLD'], 2, ['homo']);
 			    case 'mods':
 					for (i in 0...WeekData.weeksList.length) {
 						if(weekIsLocked(WeekData.weeksList[i])) continue;
@@ -201,6 +204,13 @@ class PurFreeplayState extends MusicBeatState
 		scoreBG.screenCenter(X);
 		scoreBG.y = -40;
 		add(scoreBG);
+
+		var diffText:FlxText = new FlxText(scoreText.x -10, scoreText.y + 30, 0, "", 24);
+		diffText.font = scoreText.font;
+		diffText.x = 20;
+		diffText.y = -40;
+		add(diffText);
+		diffText.text = 'Hold shift to skip character selection';
 
 		add(scoreText);
 
@@ -376,7 +386,8 @@ class PurFreeplayState extends MusicBeatState
 				PlayState.storyDifficulty = curDifficulty;
 			
 				PlayState.storyWeek = songs[curSelected].week;
-				LoadingState.loadAndSwitchState(new CharacterSelectState());
+				if (FlxG.keys.pressed.SHIFT) LoadingState.loadAndSwitchState(new PlayState());
+				else LoadingState.loadAndSwitchState(new CharacterSelectState());
 			}
 		}
     /*	if (fuckyou)
@@ -446,7 +457,8 @@ class PurFreeplayState extends MusicBeatState
 		trace('CURRENT WEEK: ' + PurWeekData.getWeekFileName());
 		CharacterSelectionState.characterFile = 'bf';
 		CharacterSelectionState.scoreMultipliers = [1, 1, 1, 1];
-		LoadingState.loadAndSwitchState(new CharacterSelectionState());
+		if (FlxG.keys.pressed.SHIFT) LoadingState.loadAndSwitchState(new PlayState());
+		else LoadingState.loadAndSwitchState(new CharacterSelectionState());
 
 		FlxG.sound.music.volume = 0;
 				
