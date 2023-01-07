@@ -62,12 +62,12 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Longer Health Bar',
+	/*	var option:Option = new Option('Longer Health Bar',
 			"Makes the Health bar longer visually\n(This doesn't give you more health!)",
 			'longAssBar',
 			'bool',
 			true);
-		addOption(option);
+		addOption(option);*/
 
 		var option:Option = new Option('Note Splashes',
 			"If unchecked, hitting \"Sick!\" notes won't show particles.",

@@ -1992,7 +1992,6 @@ class PlayState extends MusicBeatState
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		healthBarBG.visible = !ClientPrefs.hideHud;
-		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 50;
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
@@ -2002,6 +2001,7 @@ class PlayState extends MusicBeatState
 		healthBar.visible = !ClientPrefs.hideHud;
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
+		add(healthBarBG);
 
 		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -2043,8 +2043,8 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 
-		add(timeBarBG);
 		add(timeBar);
+		add(timeBarBG);
 		add(timeTxt);
 
 		add(grpNoteSplashes);
@@ -2242,9 +2242,13 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase())
 		{
 			// add moldy's songs here
-			case 'house' | 'insanity' | 'furiosity' | 'bonus-song' | 'polygonized' | 'blocked' | 'corn-theft' | 'maze' | 'splitathon' | 'cheating' | 'unfairness' | 'old-house' | 'old-insanity' | 'old-furiosity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'old-splitathon', 'beta-maze':
+			case 'house' | 'insanity' | 'furiosity' | 'bonus-song' | 'polygonized' | 'blocked' | 'corn-theft' | 'splitathon' | 'cheating' | 'unfairness' | 'old-house' | 'old-insanity' | 'old-furiosity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'old-splitathon', 'beta-maze':
 		    	composersWatermark = 'MoldyGH';
 			// add pyramix's songs here
+			case 'maze':
+				characterCountdown = 'bambi';
+				composersWatermark = 'MoldyGH';
+				if (ClientPrefs.mechanicsDifficulty != 'Pussy') health = 0.7;
             case 'reality-breaking' | 'technology' | 'body-destroyer' | 'face-destroyer':
 				composersWatermark = 'Pyramix';
 			// add randomness songs here 
