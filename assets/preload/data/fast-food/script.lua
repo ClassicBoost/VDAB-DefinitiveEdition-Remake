@@ -33,9 +33,10 @@ function onUpdate()
 end
 
 function onStepHit()
-    if curStep == 120 then
+    if curStep == 128 then
         anglefunny = true
         poopoop = false
         uhh = false
+        setProperty('health', 1)
     end
 end

@@ -270,6 +270,8 @@ class PlayState extends MusicBeatState
 	public var hasBfSunsetLevels:Array<String> = ['farmSunset', 'houseSunset'];
 	public var hasBfDarkerLevels:Array<String> = ['spooky'];
 
+	var tristanInBotTrot:BGSprite; 
+
 	private var shakeCam:Bool = false;
 	private var shakeCamALT:Bool = false;
 
@@ -631,6 +633,8 @@ class PlayState extends MusicBeatState
 				case 'furiosity' | 'polygonized':
 					curStage = '3dRed';
 					characterCountdown = 'dave';
+				case 'roofs':
+					curStage = 'roofs';
 				case 'disposition' | 'disposition_but_awesome':
 					curStage = 'bambersHell';
 				case 'overdrive':
@@ -704,24 +708,43 @@ class PlayState extends MusicBeatState
 
 		switch (curStage)
 		{
-			case 'houseDay': //Dave Week
-			var bg:BGSprite = new BGSprite('dave/sky', -600, -200, 0.2, 0.2);
+			case 'houseDay','houseSunset','houseNight': //Dave Week
+			var skyType:String = '';
+			var assetType:String = '';
+			switch (curStage)
+			{
+				case 'houseDay':
+					curStage = 'houseDay';
+					skyType = 'sky';
+				case 'houseNight':
+					curStage = 'houseNight';
+					skyType = 'sky_night';
+					assetType = 'night/';
+				case 'houseSunset':
+					curStage = 'houseSunset';
+					skyType = 'sky_sunset';
+			}
+			var bg:BGSprite = new BGSprite('backgrounds/shared/${skyType}', -600, -300, 0, 0);
 			add(bg);
+			
+			var stageHills:BGSprite = new BGSprite('backgrounds/dave-house/${assetType}hills', -834, -159, 0.1, 0.1);
+			add(stageHills);
 
-			var hills:BGSprite = new BGSprite('dave/hills', -225, -125, 0.5, 0.5);
-			hills.setGraphicSize(Std.int(hills.width * 1.25));
-			hills.updateHitbox();
-			add(hills);
+			var grassbg:BGSprite = new BGSprite('backgrounds/dave-house/${assetType}grass bg', -1205, 580);
+			add(grassbg);
 
-			var gate:BGSprite = new BGSprite('dave/gate', -226, -125, 0.9, 0.9);
-			gate.setGraphicSize(Std.int(gate.width * 1.2));
-			gate.updateHitbox();
+			var gate:BGSprite = new BGSprite('backgrounds/dave-house/${assetType}gate', -755, 250);
 			add(gate);
 
-			var grass:BGSprite = new BGSprite('dave/grass', -225, -125, 0.9, 0.9);
-			grass.setGraphicSize(Std.int(grass.width * 1.2));
-			grass.updateHitbox();
-			add(grass);
+			var stageFront:BGSprite = new BGSprite('backgrounds/dave-house/${assetType}grass', -832, 505);
+			add(stageFront);
+
+			if (curStage == 'houseSunset') {
+				stageHills.color = 0xFFF9974C;
+				grassbg.color = 0xFFF9974C;
+				gate.color = 0xFFF9974C;
+				stageFront.color = 0xFFF9974C;
+			}
 
 			insanityRed.loadGraphic(Paths.image('dave/redsky_insanity'));
 			insanityRed.antialiasing = true;
@@ -743,61 +766,32 @@ class PlayState extends MusicBeatState
 			if (isNewCam.contains(SONG.song.toLowerCase())) {
 				UsingNewCam = true;
 			}
+		case 'bedroom':
+			curStage = 'bedroom';
+				
+			var sky:BGSprite = new BGSprite('backgrounds/bedroom/sky', -285, 318, 0.8, 0.8);
+			add(sky);
 
-		case 'houseSunset': //Dave Week
-			var bg:BGSprite = new BGSprite('dave/sky_sunset', -600, -200, 0.2, 0.2);
+			var bg:BGSprite = new BGSprite('backgrounds/bedroom/bg', -687, 0);
 			add(bg);
 
-			var hills:BGSprite = new BGSprite('dave/hills', -225, -125, 0.5, 0.5);
-			hills.setGraphicSize(Std.int(hills.width * 1.25));
-			hills.updateHitbox();
-			add(hills);
+			var baldi:BGSprite = new BGSprite('backgrounds/bedroom/bed', 788, 788);
+			add(baldi);
 
-			var gate:BGSprite = new BGSprite('dave/gate', -226, -125, 0.9, 0.9);
-			gate.setGraphicSize(Std.int(gate.width * 1.2));
-			gate.updateHitbox();
-			add(gate);
-
-			var grass:BGSprite = new BGSprite('dave/grass', -225, -125, 0.9, 0.9);
-			grass.setGraphicSize(Std.int(grass.width * 1.2));
-			grass.updateHitbox();
-			add(grass);
-
-			hills.color = 0xFFFF8FB2;
-			gate.color = 0xFFFF8FB2;
-			grass.color = 0xFFFF8FB2;
-
-			if (isNewCam.contains(SONG.song.toLowerCase())) {
-				UsingNewCam = true;
-			}
-
-		case 'houseNight': //Dave Week
-			var bg:BGSprite = new BGSprite('dave/sky_night', -600, -200, 0.2, 0.2);
-			add(bg);
-
-			var hills:BGSprite = new BGSprite('dave/hills', -225, -125, 0.5, 0.5);
-			hills.setGraphicSize(Std.int(hills.width * 1.25));
-			hills.updateHitbox();
-			add(hills);
-
-			var gate:BGSprite = new BGSprite('dave/gate', -226, -125, 0.9, 0.9);
-			gate.setGraphicSize(Std.int(gate.width * 1.2));
-			gate.updateHitbox();
-			add(gate);
-
-			var grass:BGSprite = new BGSprite('dave/grass', -225, -125, 0.9, 0.9);
-			grass.setGraphicSize(Std.int(grass.width * 1.2));
-			grass.updateHitbox();
-			add(grass);
-
-			hills.color = 0xFF878787;
-			gate.color = 0xFF878787;
-			grass.color = 0xFF878787;
-
-			if (isNewCam.contains(SONG.song.toLowerCase())) {
-				UsingNewCam = true;
-			}
-
+			tristanInBotTrot = new BGSprite('backgrounds/bedroom/TristanSitting', 888, 688, 1, 1, ['daytime']);
+			tristanInBotTrot.animation.addByPrefix('idle', 'daytime', 24, false);
+			tristanInBotTrot.setGraphicSize(Std.int(tristanInBotTrot.width * 0.8));
+			tristanInBotTrot.animation.play('idle');
+			add(tristanInBotTrot);
+			if (SONG.player1 == 'tristan' || SONG.player1 == 'tristan-player' || SONG.player1 == 'tristan-golden' || SONG.player1 == 'tristan-golden-glowing') {
+				remove(tristanInBotTrot);	
+		    }
+		case 'roofs':
+			curStage = 'roofs';
+			var roof:BGSprite = new BGSprite('backgrounds/gm_house5', -584, -397, 1, 1);
+			roof.setGraphicSize(Std.int(roof.width * 2));
+			roof.antialiasing = false;
+			add(roof);
 		case 'houseroof': //SKIPPER WTF
 	    	defaultCamZoom = 0.8;
 
@@ -2230,6 +2224,14 @@ class PlayState extends MusicBeatState
 		songWatermark.visible = !ClientPrefs.hideHud;
 		add(songWatermark);
 
+		if (curSong.toLowerCase() == 'overdrive') {
+			judgementCounter.visible = false;
+			songWatermark.visible = false;
+			timeTxt.visible = false;
+			timeBar.visible = false;
+			timeBarBG.visible = false;
+		}
+
 		shartingTxt = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (ClientPrefs.downScroll ? 100 : -100), 0, "CHARTING MODE", 20);
 		shartingTxt.setFormat(Paths.font("comic-sans.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		shartingTxt.scrollFactor.set();
@@ -2242,7 +2244,7 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase())
 		{
 			// add moldy's songs here
-			case 'house' | 'insanity' | 'furiosity' | 'bonus-song' | 'polygonized' | 'blocked' | 'corn-theft' | 'splitathon' | 'cheating' | 'unfairness' | 'old-house' | 'old-insanity' | 'old-furiosity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'old-splitathon', 'beta-maze':
+			case 'warmup' | 'house' | 'insanity' | 'furiosity' | 'bonus-song' | 'polygonized' | 'blocked' | 'corn-theft' | 'splitathon' | 'cheating' | 'unfairness' | 'old-house' | 'old-insanity' | 'old-furiosity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'old-splitathon', 'beta-maze':
 		    	composersWatermark = 'MoldyGH';
 			// add pyramix's songs here
 			case 'maze':
@@ -2292,6 +2294,14 @@ class PlayState extends MusicBeatState
 		        composersWatermark = 'sola, RazorDC';
 			case 'disruption':
 				composersWatermark = 'Grantare';
+			case 'overdrive':
+				composersWatermark = 'Top 10 Awesome';
+			case 'roofs':
+				composersWatermark = 'Sibottle';
+			case 'bot-trot':
+				composersWatermark = 'TH3R34LD34L';
+			case 'adventure':
+				composersWatermark = 'Ruby';
 
 
 			case "beefin'":
@@ -2480,7 +2490,7 @@ class PlayState extends MusicBeatState
 
 	static public function quickSpin(sprite)
 		{
-			FlxTween.angle(sprite, 0, 360, 0.5, {
+			FlxTween.angle(sprite, 0, 360, 0.25, {
 				type: FlxTween.ONESHOT,
 				ease: FlxEase.quadInOut,
 				startDelay: 0,
@@ -6128,6 +6138,7 @@ class PlayState extends MusicBeatState
 		// hi
 	if(ClientPrefs.lang == 'English')
 		{
+			if (curSong.toLowerCase() != 'overdrive') {
 			if(!ClientPrefs.classicScore) {
 			//	scoreTxt.text =  'NPS: ' + nps
 			//	+ divider +'Score: ' + songScore
@@ -6183,6 +6194,10 @@ class PlayState extends MusicBeatState
 				}
 	
 			}
+		}
+		} else {
+			if(ClientPrefs.lang == 'Spanish/Espanol') scoreTxt.text = 'Puntos: ' + songScore;
+			else scoreTxt.text = 'Score:' + songScore;
 		} // prob gonna rewrite this thing so it doesnt suck lololo
 		// done for you, kinda
 	}
@@ -8600,6 +8615,8 @@ class PlayState extends MusicBeatState
 							camZoomSnap = false;
 					}
 	    }
+
+		if (curStage == 'bedroom' && curBeat % 2 == 0) tristanInBotTrot.animation.play('idle');
 
 		if (!UsingNewCam)
 		{

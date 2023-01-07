@@ -58,7 +58,7 @@ class FreeplayState extends MusicBeatState
 	var loadingPack:Bool = false;
 
 	var songColors:Array<FlxColor> = [
-		0xFF000000, // DUMBASS PLACEHOLDER
+		0xFFFFFFFF, // DUMBASS PLACEHOLDER
 		0xFF4965FF, // DAVE
 		0xFFDC97AA, // ANGEY ANGER
 		0xFF00B515, // MISTER BAMBI
@@ -130,6 +130,7 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Old-Splitathon'], 12, ['splitathon-old']);
 				case 'joke':
                     addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
+					addWeek(['Roofs'], 3, ['baldi']);
 					#if !debug
 					if (FlxG.save.data.cheatingFound)
 					#end
@@ -140,6 +141,7 @@ class FreeplayState extends MusicBeatState
 						addWeek(['Unfairness'], 5, ['bambi3dUnfair']);
 				case 'extrasandfanmades':
 					addWeek(['Bonus-Song'], 1,['dave']);
+					addWeek(['Bot-Trot'], 0, ['playrobot']);
 					addWeek(['Adventure'], 5, ['tristan']);
 					addWeek(['Overdrive'], 1, ['dave-old']);
 					addWeek(['Furiosity'], 2, ['dave3d']);

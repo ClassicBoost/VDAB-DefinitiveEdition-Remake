@@ -126,7 +126,7 @@ class PurFreeplayState extends MusicBeatState
 					addWeek(['Acquaintance'], 3, ['minion']);
 					addWeek(["Beefin'"], 3, ['homo']);
 					addWeek(['Technology'], 3, ['bombu']);
-					addWeek(['RSOD'], 3, ['bombu-expunged']);
+					addWeek(['RSOD'], 3, ['bombuExpunged']);
 				//	addWeek(['Devastation'], 3, ['dagang']);
 				//	addWeek(['Tyranny', 'Demiurge'], 4, ['dataexpunged']);
 				//	addWeek(['Antagonism'], 4, ['ohfuck']);

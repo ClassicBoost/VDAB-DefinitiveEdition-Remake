@@ -589,7 +589,7 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
                 characterSprite.playAnim('singUP');
             }
         FlxG.sound.playMusic(Paths.music('gameOverEnd'));
-        new FlxTimer().start(3, function(tmr:FlxTimer)
+        new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
                 FlxG.sound.music.stop();
                 PlayState.SONG.player1 = characterFile;
