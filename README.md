@@ -1,3 +1,7 @@
+## DnB Definitive Edition Remake
+Basically the same with bug fixes, new assets, 3.0 songs, etc. Oh yea and Purgatory is a bit different now (mainly songs that weren't there)
+
+there's still a common issue that spamming enter when loading the game will crash lol
 ## Basically a fan tweak of VS Dave And Bambi, with new content and more!
 ![notkadeenginelogo](https://media.discordapp.net/attachments/855503995119075328/907232690640654366/notkadeenginelogo.png?width=921&height=701)
 ## And also a new Fanmod called Bambi's Purgatory with cool new songs, characters and a new story! (i shat my pants)

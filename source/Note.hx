@@ -112,6 +112,16 @@ class Note extends FlxSprite
 						missHealth = 0.3;
 					}
 					hitCausesMiss = true;
+				case 'phone':
+					reloadNote('Phone');
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;
+				case 'shapes':
+					reloadNote('Shape');
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;
 				case 'No Animation':
 					noAnimation = true;
 				case 'GF Sing':

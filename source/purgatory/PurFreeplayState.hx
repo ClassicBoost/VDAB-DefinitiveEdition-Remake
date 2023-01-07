@@ -91,7 +91,7 @@ class PurFreeplayState extends MusicBeatState
 		#end
 
 		bg.loadGraphic(PurMainMenuState.randomizeBG());
-		bg.color = 0xFF4965FF;
+		bg.color = 0xFFFF878D;
 		add(bg);
 
 		CurrentSongIcon = new FlxSprite(0,0).loadGraphic(Paths.image('week_icons_' + (AllPossibleSongs[CurrentPack].toLowerCase())));
@@ -122,10 +122,11 @@ class PurFreeplayState extends MusicBeatState
 					addWeek(['Roundabout'], 3, ['dave']);
 					addWeek(['Rascal'], 3, ['caillougetsgroundedforseventeenthousandyears']);
 				//	addWeek(['Triple-Threat'], 3, ['uhmmm']);
-				//	addWeek(['Callback'], 3, ['bandu']);
+					addWeek(['Callback'], 3, ['bandu']);
 					addWeek(['Acquaintance'], 3, ['minion']);
 					addWeek(["Beefin'"], 3, ['homo']);
 					addWeek(['Technology'], 3, ['bombu']);
+					addWeek(['RSOD'], 3, ['bombu-expunged']);
 				//	addWeek(['Devastation'], 3, ['dagang']);
 				//	addWeek(['Tyranny', 'Demiurge'], 4, ['dataexpunged']);
 				//	addWeek(['Antagonism'], 4, ['ohfuck']);
@@ -134,6 +135,7 @@ class PurFreeplayState extends MusicBeatState
 
 					addWeek(['bombu-x-bamburg-shipping-cute'], 2, ['homo']);
 					addWeek(['sunshine'], 2, ['bandu']);
+					addWeek(['Disposition-BUT-AWESOME'], 2, ['bambiGod']);
 					//	#if !debug
 				///	if(FlxG.save.data.idkFound)
 				///	#end

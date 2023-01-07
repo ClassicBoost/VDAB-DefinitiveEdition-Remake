@@ -1,0 +1,80 @@
+{
+	"song": {
+		"speed": 0.799999999999999,
+		"stage": null,
+		"player1": "bf",
+		"player2": "dave",
+		"player3": null,
+		"events": [
+			[
+				0,
+				[
+					[
+						"Hide or Show HUD elements",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				333.333333333333,
+				[
+					[
+						"Hide or Show HUD elements with Fade",
+						"0",
+						""
+					]
+				]
+			],
+			[
+				8000,
+				[
+					[
+						"Hide or Show HUD elements with Fade",
+						"1",
+						""
+					]
+				]
+			],
+			[
+				32000,
+				[
+					[
+						"Change Scroll Speed",
+						"2.1",
+						"0.5"
+					]
+				]
+			],
+			[
+				53333.3333333333,
+				[
+					[
+						"Change Scroll Speed",
+						"1",
+						"0.5"
+					]
+				]
+			],
+			[
+				64000,
+				[
+					[
+						"Hide or Show HUD elements with Fade",
+						"0",
+						""
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 90,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"isSkinSep": null,
+		"song": "Warmup"
+	}
+}

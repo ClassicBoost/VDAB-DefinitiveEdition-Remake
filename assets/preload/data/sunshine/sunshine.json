@@ -29659,7 +29659,7 @@
 				"mustHitSection": true
 			}
 		],
-		"player3": "nogf",
+		"player3": "gone3",
 		"convertMineToNuke": false,
 		"mania": 0,
 		"isHey": false,
@@ -29686,7 +29686,7 @@
 		"sections": 45,
 		"needsVoices": true,
 		"uiType": "normal",
-		"gf": "gf",
+		"gf": "gone3",
 		"bpm": 105,
 		"noteStyle": null
 	}

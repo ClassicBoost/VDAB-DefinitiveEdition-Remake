@@ -1,14 +1,14 @@
 {
 	"songs": [
-		["Tutorial", "gf", [146, 113, 253]]
+		["Warmup", "dave", [146, 113, 253]]
 	],
 
 	"weekCharacters": [
 		"",
-		"bf",
-		"gf"
+		"",
+		""
 	],
-	"weekBackground": "stage",
+	"weekBackground": "dave",
 
 	"storyName": "",
 	"weekBefore": "tutorial",

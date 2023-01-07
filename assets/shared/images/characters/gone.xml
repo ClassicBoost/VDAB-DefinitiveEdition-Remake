@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="gone.png"><SubTexture name="ori idle0000" x="2039" y="692" width="475" height="685" frameX="-109" frameY="-17" frameWidth="720" frameHeight="720" />
+<SubTexture name="ori idle0001" x="1977" y="1444" width="503" height="648" frameX="-90" frameY="-54" frameWidth="720" frameHeight="720" />
+<SubTexture name="ori idle0002" x="1487" y="1444" width="490" height="661" frameX="-101" frameY="-41" frameWidth="720" frameHeight="720" />
+<SubTexture name="ori idle0003" x="1000" y="1444" width="487" height="670" frameX="-100" frameY="-32" frameWidth="720" frameHeight="720" />
+<SubTexture name="ori idle0004" x="521" y="1444" width="479" height="679" frameX="-107" frameY="-23" frameWidth="720" frameHeight="720" />
+<SubTexture name="ori idle0005" x="2039" y="692" width="475" height="685" frameX="-109" frameY="-17" frameWidth="720" frameHeight="720" />
+<SubTexture name="ori down0000" x="1494" y="0" width="545" height="702" frameX="-122" frameY="-58" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori down0001" x="0" y="726" width="545" height="718" frameX="-122" frameY="-40" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori left0000" x="0" y="0" width="756" height="726" frameX="-28" frameY="-39" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori left0001" x="756" y="0" width="738" height="726" frameX="-46" frameY="-39" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori right0000" x="1494" y="702" width="489" height="692" frameX="-151" frameY="-71" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori right0001" x="2039" y="0" width="477" height="692" frameX="-147" frameY="-71" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori up0000" x="545" y="726" width="521" height="703" frameX="-158" frameY="-46" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori up0001" x="0" y="1444" width="521" height="685" frameX="-158" frameY="-66" frameWidth="820" frameHeight="820" />
+<SubTexture name="ori dies0000" x="2418" y="2862" width="957" height="670" frameX="0" frameY="-20" frameWidth="1080" frameHeight="720" />
+<SubTexture name="ori dies0001" x="3837" y="1942" width="467" height="559" frameX="-245" frameY="-130" frameWidth="1080" frameHeight="720" />
+<SubTexture name="ori dies0002" x="3837" y="1322" width="470" height="620" frameX="-249" frameY="-69" frameWidth="1080" frameHeight="720" />
+<SubTexture name="ori dies0003" x="3837" y="2501" width="472" height="454" frameX="-256" frameY="-235" frameWidth="1080" frameHeight="720" />
+<SubTexture name="ori dies0004" x="3837" y="2501" width="472" height="454" frameX="-256" frameY="-235" frameWidth="1080" frameHeight="720" />
+</TextureAtlas>

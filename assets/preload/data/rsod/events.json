@@ -1,0 +1,170 @@
+{
+	"song": {
+		"speed": 3.80000000000002,
+		"stage": "3dRed",
+		"player1": "bf",
+		"player2": "bombu-expunged",
+		"player3": null,
+		"events": [
+			[
+				0,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				400,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				800,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				1066.66666666667,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				1333.33333333333,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				1600,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				1733.33333333333,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				1866.66666666667,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				1933.33333333333,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				2000,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				2066.66666666667,
+				[
+					[
+						"Add Camera Zoom",
+						"0.1",
+						"0.1"
+					]
+				]
+			],
+			[
+				36266.6666666667,
+				[
+					[
+						"Add Camera Zoom",
+						"",
+						"5"
+					]
+				]
+			],
+			[
+				55466.6666666666,
+				[
+					[
+						"Add Camera Zoom",
+						"",
+						"5"
+					]
+				]
+			],
+			[
+				123733.333333334,
+				[
+					[
+						"Add Camera Zoom",
+						"",
+						"5"
+					]
+				]
+			],
+			[
+				157866.666666667,
+				[
+					[
+						"Add Camera Zoom",
+						"",
+						"5"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": "noteSplashes",
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 225,
+		"arrowSkin": "",
+		"needsVoices": false,
+		"isSkinSep": null,
+		"song": "RSOD"
+	}
+}

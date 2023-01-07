@@ -195,7 +195,7 @@
 			"indices": [],
 			"fps": 24,
 			"anim": "idle",
-			"loop": false,
+			"loop": true,
 			"name": "BF idle dance"
 		}
 	],
@@ -205,7 +205,7 @@
 		0,
 		350
 	],
-	"healthicon": "bf",
+	"healthicon": "bf-scared",
 	"flip_x": true,
 	"healthbar_colors": [
 		76,

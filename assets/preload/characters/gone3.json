@@ -1,0 +1,111 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				148,
+				51
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "ori left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				39,
+				14
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "ori down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				74,
+				50
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "ori up",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-18,
+				48
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "ori right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				1,
+				-5
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "ori idle",
+			"indices": []
+		},
+		{
+			"loop": true,
+			"offsets": [
+				109,
+				-8
+			],
+			"anim": "deathLoop",
+			"fps": 24,
+			"name": "ori-scared ded",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				109,
+				-7
+			],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "ori-scared ded",
+			"indices": []
+		},
+		{
+			"offsets": [
+				110,
+				-7
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "firstDeath",
+			"loop": false,
+			"name": "ori dies"
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/gone",
+	"position": [
+		-100,
+		140
+	],
+	"healthicon": "nonelmao",
+	"flip_x": false,
+	"healthbar_colors": [
+		0,
+		0,
+		0
+	],
+	"camera_position": [
+		50,
+		100
+	],
+	"sing_duration": 6.1,
+	"scale": 0.7
+}

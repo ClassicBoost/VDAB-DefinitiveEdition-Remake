@@ -1,22 +1,6 @@
 {
 	"animations": [
 		{
-			"loop": true,
-			"offsets": [
-				0,
-				40
-			],
-			"anim": "idle-loop",
-			"fps": 12,
-			"name": "Dave Idle",
-			"indices": [
-				11,
-				12,
-				13,
-				14
-			]
-		},
-		{
 			"offsets": [
 				0,
 				40
@@ -25,55 +9,121 @@
 			"fps": 24,
 			"anim": "idle",
 			"indices": [],
-			"name": "Idle"
+			"name": "bambi idle"
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-20,
-				-20
+				120,
+				141
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "bambi alt left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				126,
+				141
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "bambi alt right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				36,
+				52
+			],
+			"anim": "singRIGHT-alt",
+			"fps": 24,
+			"name": "bambi alt right",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				120,
+				141
+			],
+			"anim": "slam",
+			"fps": 24,
+			"name": "bambi phone",
+			"indices": []
+		},
+		{
+			"offsets": [
+				26,
+				44
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singLEFT-alt",
+			"indices": [],
+			"name": "bambi alt left"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				40,
+				10
 			],
 			"anim": "singDOWN",
 			"fps": 24,
-			"name": "down",
+			"name": "bambi down",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				66,
+				81
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "bambi up",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
 				46,
-				41
+				71
 			],
-			"anim": "singUP",
+			"anim": "attack",
 			"fps": 24,
-			"name": "up",
+			"name": "bambi throw",
 			"indices": []
 		},
 		{
 			"loop": false,
 			"offsets": [
-				-54,
-				32
+				-4,
+				42
 			],
 			"anim": "singRIGHT",
 			"fps": 24,
-			"name": "right",
+			"name": "bambi right",
 			"indices": []
 		},
 		{
 			"offsets": [
-				26,
-				34
+				76,
+				44
 			],
-			"indices": [],
+			"loop": false,
 			"fps": 24,
 			"anim": "singLEFT",
-			"loop": false,
-			"name": "left"
+			"indices": [],
+			"name": "bambi left"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/bambi",
+	"image": "characters/bambiRemake",
 	"position": [
 		90,
 		430

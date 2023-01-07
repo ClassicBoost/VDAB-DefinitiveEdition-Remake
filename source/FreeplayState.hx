@@ -118,9 +118,9 @@ class FreeplayState extends MusicBeatState
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'dave':
+					addWeek(['Warmup'], 1, ['dave']);
 					addWeek(['House', 'Insanity'], 1, ['dave']);
 					addWeek(['Polygonized'], 2,['dave3d']);
-					addWeek(['Bonus-Song'], 1,['dave']);
 					addWeek(['Blocked','Corn-Theft','Maze',], 3, ['bambi']);
 					addWeek(['Splitathon'], 12,['splitathon']);
 				case 'old':
@@ -139,6 +139,9 @@ class FreeplayState extends MusicBeatState
 					#end
 						addWeek(['Unfairness'], 5, ['bambi3dUnfair']);
 				case 'extrasandfanmades':
+					addWeek(['Bonus-Song'], 1,['dave']);
+					addWeek(['Adventure'], 5, ['tristan']);
+					addWeek(['Overdrive'], 1, ['dave-old']);
 					addWeek(['Furiosity'], 2, ['dave3d']);
 					addWeek(['Mealie'], 3, ['bambi']);
 					addWeek(['8-28-63'], 1, ['splitathon']);
