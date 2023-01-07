@@ -131,6 +131,7 @@ class PurFreeplayState extends MusicBeatState
 				//	addWeek(['Antagonism'], 4, ['ohfuck']);
 				case 'extrasandfanmades':
 					addWeek(['Fast-Food'], 2, ['homo']);
+					addWeek(['Supplanted-OLD'], 2, ['bambiRage']);
 					addWeek(['OLD-Rebound'], 2, ['bambiGod']);
 					addWeek(['bombu-x-bamburg-shipping-cute'], 2, ['homo']);
 					addWeek(['sunshine'], 2, ['bandu']);

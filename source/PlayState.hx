@@ -603,7 +603,7 @@ class PlayState extends MusicBeatState
 					curStage = 'farmDay';
 				case 'maze' | 'old-maze' | 'beta-maze':
 					curStage = 'farmSunset';
-				case 'splitathon' | 'old-splitathon' | 'mealie' | 'supplanted' | 'screwed':
+				case 'splitathon' | 'old-splitathon' | 'mealie' | 'supplanted' | 'supplanted-old' | 'screwed':
 					curStage = 'farmNight';
 				case 'furiosity' | 'polygonized':
 					curStage = '3dRed';
@@ -8755,7 +8755,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	public var ratingName:String = '?';
+	public var ratingName:String = 'F';
 	public var ratingPercent:Float;
 	public var ratingFC:String;
 	public function RecalculateRating()
@@ -8770,7 +8770,7 @@ class PlayState extends MusicBeatState
 	    	if(ret != FunkinLua.Function_Stop)
 	    	{
 	    		if(totalPlayed < 1) //Prevent divide by 0
-	    			ratingName = '?';
+	    			ratingName = 'F';
 	    		else
 		    	{
 			    	// Rating Percent
