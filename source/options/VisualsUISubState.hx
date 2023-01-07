@@ -57,7 +57,7 @@ class VisualsUISubState extends BaseOptionsMenu
 
 		var option:Option = new Option('Judgement Counter',
 			"Shows a judgement counter at the left of the screen (Example: Sicks: 93,\nGoods:0, Bads: 1, 'Shits: 0)",
-			'noteSplashes',
+			'judgementCounter', // how was this note splashes?
 			'bool',
 			true);
 		addOption(option);
@@ -72,6 +72,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Note Splashes',
 			"If unchecked, hitting \"Sick!\" notes won't show particles.",
 			'noteSplashes',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Opponent Note Splashes',
+			"If checked, the opponent will have note splashes.\n(Not reccomeded for some songs)",
+			'opponentSplashes',
 			'bool',
 			true);
 		addOption(option);

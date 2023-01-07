@@ -30,7 +30,7 @@ using StringTools;
 
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Controls'  #if android , 'Android Controls' #end, 'Gameplay', 'Visuals and UI', 'Graphics', 'Misc', 'Note Colors', 'Customize Gameplay'];
+	var options:Array<String> = ['Controls'  #if android , 'Android Controls' #end, 'Gameplay', 'Visuals and UI', 'Graphics', 'Misc',];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;

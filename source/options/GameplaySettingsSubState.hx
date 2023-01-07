@@ -42,18 +42,12 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			false);
 		addOption(option);
 
-		var option:Option = new Option('Judgement Counter',
-			"Shows a judgement counter at the left of the screen (Example: Sicks: 93,\nGoods:0, Bads: 1, 'Shits: 0)",
-			'judgementCounter',
-			'bool',
-			true);
-		addOption(option);
-
-		var option:Option = new Option('Enable Hitsounds',
-			'Funny notes does \"Tick!\" when you hit them."',
-			'hitsounds',
-			'bool',
-			true);
+		var option:Option = new Option('Mechanics:',
+			"If you wanna have a bad time, set it to hell.\n(Very unfinished!)",
+			'mechanicsDifficulty',
+			'string',
+			'Normal',
+			['Pussy','Normal','HELL']);
 		addOption(option);
 
 		var option:Option = new Option('Select Hitsound:',
@@ -94,6 +88,13 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		var option:Option = new Option('Ghost Tapping',
 			"If checked, you won't get misses from pressing keys\nwhile there are no notes able to be hit.",
 			'ghostTapping',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Late Damage',
+			"If checked, hitting notes late/early will hurt you.",
+			'lateDamage',
 			'bool',
 			true);
 		addOption(option);
@@ -160,9 +161,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'int',
 			45);
 		option.displayFormat = '%vms';
-		option.scrollSpeed = 15;
+		option.scrollSpeed = 30;
 		option.minValue = 15;
-		option.maxValue = 45;
+		option.maxValue = 90;
 		addOption(option);
 
 		var option:Option = new Option('Good Hit Window',
@@ -171,9 +172,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'int',
 			90);
 		option.displayFormat = '%vms';
-		option.scrollSpeed = 30;
+		option.scrollSpeed = 60;
 		option.minValue = 15;
-		option.maxValue = 90;
+		option.maxValue = 181;
 		addOption(option);
 
 		var option:Option = new Option('Bad Hit Window',
@@ -182,9 +183,9 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			'int',
 			135);
 		option.displayFormat = '%vms';
-		option.scrollSpeed = 60;
+		option.scrollSpeed = 90;
 		option.minValue = 15;
-		option.maxValue = 135;
+		option.maxValue = 271;
 		addOption(option);
 
 		var option:Option = new Option('Safe Frames',
@@ -194,7 +195,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			10);
 		option.scrollSpeed = 5;
 		option.minValue = 2;
-		option.maxValue = 10;
+		option.maxValue = 20;
 		option.changeValue = 0.1;
 		addOption(option);
 

@@ -143,7 +143,7 @@ class NewStoryPurgatory extends MusicBeatState
 		{
 			lol = true;
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			startSong('shattered/shattered-hard', 'supplanted', 'reality breaking');	
+			startSong('shattered/shattered', 'supplanted', 'reality breaking');	
 		}
 		  
 		if(controls.BACK)

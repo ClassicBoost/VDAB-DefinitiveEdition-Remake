@@ -13,9 +13,10 @@ class ClientPrefs {
 	public static var laneTransparency:Float = 0.5;
 	public static var showFPS:Bool = #if android false #else true #end;
 	public static var judgementCounter:Bool = false;
+	public static var opponentSplashes:Bool = true;
 	public static var followarrow:Bool = true;
 	public static var flashing:Bool = true;
-	public static var hitsounds:Bool = false;
+	public static var hitsounds:Bool = true;
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
 	public static var lowQuality:Bool = false;
@@ -24,6 +25,7 @@ class ClientPrefs {
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
+	public static var lateDamage:Bool = true;
 	public static var noteOffset:Int = 0;
 	public static var speed:Float = 2;
 	public static var noteSize:Float = 0.7;
@@ -42,7 +44,8 @@ class ClientPrefs {
 	public static var ratinginHud:Bool = true;
 	public static var colorBars:Bool = true;
 	public static var classicScore:Bool = false;
-	public static var hitsoundVolume:Float = 1;
+	public static var mechanicsDifficulty:String = 'Normal';
+	public static var hitsoundVolume:Float = 0;
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = #if android true #else false #end;
 	public static var hitsoundtype:String = 'vs-dave';
@@ -156,7 +159,10 @@ class ClientPrefs {
 		FlxG.save.data.classicScore = classicScore;
 		FlxG.save.data.ratinginHud = ratinginHud;
 		FlxG.save.data.colorBars = colorBars;
+		FlxG.save.data.lateDamage = lateDamage;
 		FlxG.save.data.lang = lang;
+		FlxG.save.data.mechanicsDifficulty = mechanicsDifficulty;
+		FlxG.save.data.opponentSplashes = opponentSplashes;
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
@@ -224,6 +230,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.classicScore != null) {
 			classicScore = FlxG.save.data.classicScore;
+		}
+		if(FlxG.save.data.opponentSplashes != null) {
+			opponentSplashes = FlxG.save.data.opponentSplashes;
 		}
 		if(FlxG.save.data.noReset != null) {
 			noReset = FlxG.save.data.noReset;
@@ -297,6 +306,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.safeFrames != null) {
 			safeFrames = FlxG.save.data.safeFrames;
+		}
+		if(FlxG.save.data.lateDamage != null) {
+			lateDamage = FlxG.save.data.lateDamage;
+		}
+		if(FlxG.save.data.mechanicsDifficulty != null) {
+			mechanicsDifficulty = FlxG.save.data.mechanicsDifficulty;
 		}
 		if(FlxG.save.data.freeplayCuts != null) {
 			freeplayCuts = FlxG.save.data.freeplayCuts;

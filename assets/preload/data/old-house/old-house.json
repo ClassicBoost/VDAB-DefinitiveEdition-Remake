@@ -11251,6 +11251,7 @@
 		"player2": "dave-older",
 		"player3": "gf",
 		"song": "Old-House",
+		"stage": "houseOlderDay",
 		"needsVoices": true,
 		"sections": 477,
 		"validScore": true,

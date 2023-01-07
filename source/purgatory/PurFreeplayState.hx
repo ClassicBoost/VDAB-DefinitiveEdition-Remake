@@ -31,7 +31,7 @@ class PurFreeplayState extends MusicBeatState
 
 	var selector:FlxText;
 	var curSelected:Int = 0;
-	var curDifficulty:Int = 1;
+	var curDifficulty:Int = 0;
 
 	var bg:FlxSprite = new FlxSprite(0).loadGraphic(PurMainMenuState.randomizeBG());
 
@@ -115,21 +115,23 @@ class PurFreeplayState extends MusicBeatState
 			switch (AllPossibleSongs[CurrentPack].toLowerCase())
 			{
 				case 'purgatory':
-					addWeek(['Shattered', 'Supplanted'], 1, ['bambiRage']);
+					addWeek(['Shattered'], 1, ['bambiMad']);
+					addWeek(['Supplanted'], 1, ['bambiRage']);
 					addWeek(['Reality-Breaking'], 2, ['bambiGod2d']);
-					addWeek(['Rebound', '???', 'Upheaval'], 2, ['bambiGod']);
+					addWeek(['Rebound', 'Disposition', 'Upheaval'], 2, ['bambiGod']);
 					addWeek(['Roundabout'], 3, ['dave']);
 					addWeek(['Rascal'], 3, ['caillougetsgroundedforseventeenthousandyears']);
-					addWeek(['Triple-Threat'], 3, ['uhmmm']);
-					addWeek(['Callback'], 3, ['bandu']);
+				//	addWeek(['Triple-Threat'], 3, ['uhmmm']);
+				//	addWeek(['Callback'], 3, ['bandu']);
 					addWeek(['Acquaintance'], 3, ['minion']);
 					addWeek(["Beefin'"], 3, ['homo']);
 					addWeek(['Technology'], 3, ['bombu']);
-					addWeek(['Devastation'], 3, ['dagang']);
-					addWeek(['Tyranny', 'Demiurge'], 4, ['dataexpunged']);
-					addWeek(['Antagonism'], 4, ['ohfuck']);
+				//	addWeek(['Devastation'], 3, ['dagang']);
+				//	addWeek(['Tyranny', 'Demiurge'], 4, ['dataexpunged']);
+				//	addWeek(['Antagonism'], 4, ['ohfuck']);
 				case 'extrasandfanmades':
 					addWeek(['Fast-Food'], 2, ['homo']);
+					addWeek(['OLD-Rebound'], 2, ['bambiGod']);
 					addWeek(['bombu-x-bamburg-shipping-cute'], 2, ['homo']);
 					addWeek(['sunshine'], 2, ['bandu']);
 					//	#if !debug
@@ -426,7 +428,7 @@ class PurFreeplayState extends MusicBeatState
 		if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
 		#end
 			poop = songLowercase;
-			curDifficulty = 1;
+			curDifficulty = 0;
 			trace('Couldnt find file');
 		}
 		trace(poop);
@@ -469,12 +471,7 @@ public static function destroyFreeplayVocals() {
 
 	function changeDiff(change:Int = 0)
 	{
-		curDifficulty += change;
-
-		if (curDifficulty < 2)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
-			curDifficulty = 2;
+		curDifficulty = 0;
 		
 		#if !switch
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
@@ -497,11 +494,11 @@ public static function destroyFreeplayVocals() {
 
 		if (songs[curSelected].week != 1 || songs[curSelected].songName == 'Old-Insanity')
 		{
-			if (curDifficulty < 2)
-				curDifficulty = 2;
+			if (curDifficulty < 0)
+				curDifficulty = 0;
 
-			if (curDifficulty > 2)
-				curDifficulty = 2;
+			if (curDifficulty > 0)
+				curDifficulty = 0;
 		}
 
 		#if !switch

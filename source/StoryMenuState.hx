@@ -30,7 +30,7 @@ class StoryMenuState extends MusicBeatState
 
 	var scoreText:FlxText;
 
-	private static var curDifficulty:Int = 1;
+	private static var curDifficulty:Int = 0;
 
 	var txtWeekTitle:FlxText;
 	var bgSprite:FlxSprite;
@@ -147,7 +147,7 @@ class StoryMenuState extends MusicBeatState
 		leftArrow.animation.addByPrefix('press', "arrow push left");
 		leftArrow.animation.play('idle');
 		leftArrow.antialiasing = ClientPrefs.globalAntialiasing;
-		difficultySelectors.add(leftArrow);
+	//	difficultySelectors.add(leftArrow);
 
 		sprDifficultyGroup = new FlxTypedGroup<FlxSprite>();
 		add(sprDifficultyGroup);
@@ -158,7 +158,7 @@ class StoryMenuState extends MusicBeatState
 			sprDifficulty.x += (308 - sprDifficulty.width) / 2;
 			sprDifficulty.ID = i;
 			sprDifficulty.antialiasing = ClientPrefs.globalAntialiasing;
-			sprDifficultyGroup.add(sprDifficulty);
+		//	sprDifficultyGroup.add(sprDifficulty);
 		}
 		changeDifficulty();
 
@@ -170,7 +170,7 @@ class StoryMenuState extends MusicBeatState
 		rightArrow.animation.addByPrefix('press', "arrow push right", 24, false);
 		rightArrow.animation.play('idle');
 		rightArrow.antialiasing = ClientPrefs.globalAntialiasing;
-		difficultySelectors.add(rightArrow);
+	//	difficultySelectors.add(rightArrow);
 
 		add(yellowBG);
 		add(bgSprite);
@@ -348,26 +348,14 @@ class StoryMenuState extends MusicBeatState
 
 	function changeDifficulty(change:Int = 0):Void
 	{
-		curDifficulty += change;
-
-		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficultyStuff.length-1;
-		if (curDifficulty >= CoolUtil.difficultyStuff.length)
-			curDifficulty = 0;
-		else
-		{
-			if (curDifficulty < 0)
-				curDifficulty = 2;
-			if (curDifficulty > 2)
-				curDifficulty = 0;
-		}
+		curDifficulty = 0;
 		if (curWeek == 3)
 		{
-			curDifficulty = 3;
+			curDifficulty = 1;
 		}
 		if (curWeek == 4 || curWeek == 5 || curWeek == 6 || curWeek == 7 || curWeek == 8)
 		{
-			curDifficulty = 2;
+			curDifficulty = 0;
 		}
 
 		sprDifficultyGroup.forEach(function(spr:FlxSprite) {
@@ -402,21 +390,21 @@ class StoryMenuState extends MusicBeatState
      		rightArrow.visible = true;
 		if (curWeek == 3)
 			{
-				curDifficulty = 3;
+				curDifficulty = 1;
 				updateDifficultySprite();
 				leftArrow.visible = false;
 				rightArrow.visible = false;
 			}
 			if (curWeek == 4 || curWeek == 5 || curWeek == 6 || curWeek == 7 || curWeek == 8)
 				{
-					curDifficulty = 2;
+					curDifficulty = 0;
 					updateDifficultySprite();
 					leftArrow.visible = false;
 					rightArrow.visible = false;
 				}
 		if (curWeek == 0 || curWeek == 2) //updates the difficulty sprite when changing the week
 			{
-				curDifficulty = 2;
+				curDifficulty = 0;
 				updateDifficultySprite();
 			}
 		var leWeek:WeekData = WeekData.weeksLoaded.get(WeekData.weeksList[curWeek]);

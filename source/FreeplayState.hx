@@ -26,7 +26,7 @@ class FreeplayState extends MusicBeatState
 
 	var selector:FlxText;
 	var curSelected:Int = 0;
-	var curDifficulty:Int = 1;
+	var curDifficulty:Int = 0;
 
 	var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('backgrounds/SUSSUS AMOGUS'));
 
@@ -124,10 +124,10 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Blocked','Corn-Theft','Maze',], 3, ['bambi']);
 					addWeek(['Splitathon'], 12,['splitathon']);
 				case 'old':
-					addWeek(['Old-House', 'Old-Insanity'], 1, ['daveOld']);
+					addWeek(['Old-House', 'Old-Insanity'], 1, ['daveBeta']);
 					addWeek(['Old-Furiosity'], 2,['davesharted']);
 					addWeek(['Old-Blocked', 'Old-Corn-Theft', 'beta-maze', 'Old-Maze'], 3, ['bamberfunny']);
-					addWeek(['Old-Splitathon'], 12, ['Splitathon']);
+					addWeek(['Old-Splitathon'], 12, ['splitathon-old']);
 				case 'joke':
                     addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
 					#if !debug
@@ -216,7 +216,7 @@ class FreeplayState extends MusicBeatState
 		diffText.font = scoreText.font;
 		diffText.x = 20;
 		diffText.y = -40;
-		add(diffText);
+	//	add(diffText);
 
 		add(scoreText);
 
@@ -433,7 +433,7 @@ class FreeplayState extends MusicBeatState
 		if(!OpenFlAssets.exists(Paths.json(songLowercase + '/' + poop))) {
 		#end
 			poop = songLowercase;
-			curDifficulty = 1;
+			curDifficulty = 0;
 			trace('Couldnt find file');
 		}
 		trace(poop);
@@ -476,17 +476,12 @@ public static function destroyFreeplayVocals() {
 
 	function changeDiff(change:Int = 0)
 	{
-		curDifficulty += change;
-
-		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
-			curDifficulty = 0;
+		curDifficulty = 0;
 		
 		if(!isInMods) {
 	     	if (songs[curSelected].week == 12)
 			{
-				curDifficulty = 3;
+				curDifficulty = 1;
 			}
 		}
 		#if !switch
@@ -495,7 +490,7 @@ public static function destroyFreeplayVocals() {
 		#end
 	
 		PlayState.storyDifficulty = curDifficulty;
-		diffText.text = '< ' + CoolUtil.difficultyString() + ' >';
+		diffText.text = '';
 	}
 
 	function changeSelection(change:Int = 0)
@@ -511,18 +506,18 @@ public static function destroyFreeplayVocals() {
 
 		if (songs[curSelected].week != 1 || songs[curSelected].songName == 'Old-Insanity')
 		{
-			if (curDifficulty < 2)
-				curDifficulty = 2;
+			if (curDifficulty < 0)
+				curDifficulty = 0;
 
-			if (curDifficulty > 2)
-				curDifficulty = 2;
+			if (curDifficulty > 0)
+				curDifficulty = 0;
 		}
 
 
 		if(!isInMods) {
 	    	if (songs[curSelected].week == 12)
 	     	{
-	    		curDifficulty = 3;
+	    		curDifficulty = 1;
 	    	}
 		}
 

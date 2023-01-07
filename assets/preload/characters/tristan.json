@@ -17,7 +17,7 @@
 				-65,
 				34
 			],
-			"anim": "singLEFT",
+			"anim": "singRIGHT",
 			"fps": 24,
 			"name": "BF NOTE LEFT0",
 			"indices": []
@@ -50,7 +50,7 @@
 				-48,
 				23
 			],
-			"anim": "singRIGHT",
+			"anim": "singLEFT",
 			"fps": 24,
 			"name": "BF NOTE RIGHT0",
 			"indices": []
