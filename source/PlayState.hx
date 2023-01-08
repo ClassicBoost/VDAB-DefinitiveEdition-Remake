@@ -135,6 +135,8 @@ class PlayState extends MusicBeatState
 	public var GF_X:Float = 400;
 	public var GF_Y:Float = 130;
 
+	var shapeNoteWarning:FlxSprite;
+
 	private var overridemiss:String = '';
 	
 	public var songSpeedTween:FlxTween;
@@ -439,6 +441,8 @@ class PlayState extends MusicBeatState
     
 	public static var theFunne:Bool = true;
 
+	var a3dsong:Bool = false;
+
 	#if windows
 	public var crazyBatch:String = "shutdown /r /t 0"; // this isnt actually getting used cuz i dont think gb allows it lmao
     #end
@@ -610,6 +614,7 @@ class PlayState extends MusicBeatState
 		curStage = PlayState.SONG.stage;
 		trace('hey ur stage is: ' + curStage);
 		characterCountdown = 'default';
+		a3dsong = false;
 		if(PlayState.SONG.stage == null || PlayState.SONG.stage.length < 1) {
 			switch (songName)
 			{
@@ -642,6 +647,7 @@ class PlayState extends MusicBeatState
 				case 'furiosity' | 'polygonized':
 					curStage = '3dRed';
 					characterCountdown = 'dave';
+					a3dsong = true;
 				case 'roofs':
 					curStage = 'roofs';
 				case 'disposition' | 'disposition_but_awesome':
@@ -657,6 +663,7 @@ class PlayState extends MusicBeatState
 					characterCountdown = 'bambi';
 				case 'technology':
 					curStage = '3dBombuboi';
+					a3dsong = true;
 				case 'unfairness':
 					curStage = '3dScary';
 					characterCountdown = 'bambi';
@@ -2260,8 +2267,11 @@ class PlayState extends MusicBeatState
 				characterCountdown = 'bambi';
 				composersWatermark = 'MoldyGH';
 				if (ClientPrefs.mechanicsDifficulty != 'Pussy') health = 0.7;
-            case 'reality-breaking' | 'technology' | 'body-destroyer' | 'face-destroyer':
+            case 'reality-breaking' | 'body-destroyer' | 'face-destroyer':
 				composersWatermark = 'Pyramix';
+			case 'technology':
+				composersWatermark = 'Pyramix';
+				a3dsong = true;
 			// add randomness songs here 
 		    case 'shattered':
 				composersWatermark = 'EpicRandomness11';
@@ -2354,6 +2364,14 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) {
 			botplayTxt.y = timeBarBG.y - 78;
 		}
+
+		
+		shapeNoteWarning = new FlxSprite(0, FlxG.height * 2).loadGraphic(Paths.image('ui/shapeNoteWarning'));
+		shapeNoteWarning.cameras = [camOther];
+		shapeNoteWarning.scrollFactor.set();
+		shapeNoteWarning.antialiasing = false;
+		shapeNoteWarning.alpha = 0;
+		if (a3dsong) add(shapeNoteWarning);
 
 		blackScreendeez.cameras = [camHUD];
 		strumLineNotes.cameras = [camHUD];
@@ -3247,7 +3265,23 @@ class PlayState extends MusicBeatState
 								},
 								ease: FlxEase.circOut
 							});
-
+							FlxTween.tween(shapeNoteWarning, {alpha: 1}, 1);
+							FlxTween.tween(shapeNoteWarning, {y: 450}, 1, {ease: FlxEase.backOut, 
+								onComplete: function(tween:FlxTween)
+								{
+									new FlxTimer().start(2, function(timer:FlxTimer)
+									{
+										FlxTween.tween(shapeNoteWarning, {alpha: 0}, 1);
+										FlxTween.tween(shapeNoteWarning, {y: FlxG.height * 2}, 1, {
+											ease: FlxEase.backIn,
+											onComplete: function(tween:FlxTween)
+											{
+												remove(shapeNoteWarning);
+											}
+										});
+									});
+								}
+							});
 					case 4:
 				}
 
@@ -5361,7 +5395,7 @@ class PlayState extends MusicBeatState
 		else if (healthBar.percent > 80)
 		{
 			iconP1.animation.curAnim.curFrame = 2;
-			FlxTween.tween(scoreTxt, {color:0xFFA2F6F9}, 0.05);
+		//	FlxTween.tween(scoreTxt, {color:0xFFA2F6F9}, 0.05);
 		}
 		else
 		{
@@ -7921,7 +7955,7 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		
+		if ((note.noteType != 'shape' && !FlxG.keys.pressed.SPACE) || (note.noteType == 'shape' && FlxG.keys.pressed.SPACE) || !a3dsong) {
 		if (!note.isSustainNote)
 			notesHitArray.push(Date.now());
 
@@ -8110,6 +8144,7 @@ class PlayState extends MusicBeatState
 				notes.remove(note, true);
 				note.destroy();
 			}
+		}
 		}
 	}
 	
