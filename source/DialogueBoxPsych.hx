@@ -184,6 +184,9 @@ class DialogueBoxPsych extends FlxSpriteGroup
 	var curCharacter:String = "";
 	//var charPositionList:Array<String> = ['left', 'center', 'right'];
 
+	public var stupidshitass:String = 'bfDialogue';
+	private var stuffthing:String = 'dialogue/';
+
 	public function new(dialogueList:DialogueFile, ?song:String = null)
 	{
 		super();
@@ -298,6 +301,22 @@ class DialogueBoxPsych extends FlxSpriteGroup
 			super.update(elapsed);
 			return;
 		}
+		
+		// sigh this is my 4th attempt on trying to make this work
+	/*	switch (curCharacter) {
+			case 'bf':
+				stupidshitass = '${stuffthing}bfDialogue';
+			case 'davehouse','daveinsanity','davepolygonized','davepre-polygonized','davesplitathon','davebambi-week':
+				stupidshitass = '${stuffthing}daveDialogue';
+			case 'bambi3d','bambiangry','bambigrin','bambisplitathon','bambiunfair3d':
+				stupidshitass = '${stuffthing}bambiDialogue1';
+			case 'gf','gfcheer','gfconfused','gfannoyed','gfhappy':
+				stupidshitass = '${stuffthing}gfDialogue';
+			case 'tristan':
+				stupidshitass = '${stuffthing}trisDialogue';
+			default:
+				stupidshitass = 'dialogue';
+		}*/
 
 		if(!dialogueEnded) {
 			bgFade.alpha += 0.5 * elapsed;
@@ -508,6 +527,8 @@ class DialogueBoxPsych extends FlxSpriteGroup
 		lastCharacter = character;
 		lastBoxType = boxType;
 
+
+
 		if(daText != null) {
 			daText.killTheTimer();
 			daText.kill();
@@ -530,6 +551,7 @@ class DialogueBoxPsych extends FlxSpriteGroup
 				char.animation.curAnim.frameRate = rate;
 			}
 		}
+
 		currentText++;
 
 		if(nextDialogueThing != null) {

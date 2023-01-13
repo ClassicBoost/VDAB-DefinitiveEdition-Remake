@@ -5,6 +5,7 @@
 			"text": "Wow! You're really good at this..",
 			"boxState": "normal",
 			"portrait": "daveinsanity",
+			"sound": "daveDialogue",
 			"speed": 0.05
 		},
 		{
@@ -12,6 +13,7 @@
 			"text": "Skdoo bep",
 			"boxState": "normal",
 			"portrait": "bf",
+			"sound": "bfDialogue",
 			"speed": 0.05
 		},
 		{
@@ -19,6 +21,7 @@
 			"text": "Hmph. Let's go again, don't you think?",
 			"boxState": "normal",
 			"portrait": "daveinsanity",
+			"sound": "daveDialogue",
 			"speed": 0.05
 		},
 		{
@@ -26,6 +29,7 @@
 			"text": "Boop",
 			"boxState": "normal",
 			"portrait": "bf",
+			"sound": "bfDialogue",
 			"speed": 0.05
 		},
 		{
@@ -33,6 +37,7 @@
 			"text": "Alrighty then!",
 			"boxState": "normal",
 			"portrait": "daveinsanity",
+			"sound": "daveDialogue",
 			"speed": 0.05
 		}
 	]

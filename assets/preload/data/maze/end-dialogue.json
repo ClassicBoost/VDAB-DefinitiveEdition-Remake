@@ -5,6 +5,7 @@
 			"text": "Fine... You win...",
 			"boxState": "normal",
 			"speed": 0.065,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -12,6 +13,7 @@
 			"text": "Beep.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bfDialogue",
 			"portrait": "bf"
 		},
 		{
@@ -19,6 +21,7 @@
 			"text": "Huh?",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -26,6 +29,7 @@
 			"text": "Beephoo bah bee boski ba ska bee bo boop",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bfDialogue",
 			"portrait": "bf"
 		},
 		{
@@ -33,6 +37,7 @@
 			"text": "Oh... I'm sorry you actually here for Dave?",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -40,6 +45,7 @@
 			"text": "But Dave isn't here though... Whatchu mean?",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -47,6 +53,7 @@
 			"text": "Yeah, Dave isn't even here!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "gfDialogue",
 			"portrait": "gfannoyed"
 		},
 		{
@@ -61,6 +68,7 @@
 			"text": "Hey, I'm here. Sorry I was running late.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "davehouse"
 		},
 		{
@@ -68,6 +76,7 @@
 			"text": "Tristan was a pain to get up.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -75,6 +84,7 @@
 			"text": "He was like \"''But Dave, it's Saturday, we don't have school!''",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -82,6 +92,7 @@
 			"text": "DON'T TALK ABOUT ME LIKE I'M NOT HERE!",
 			"boxState": "normal",
 			"speed": 0.04,
+			"sound": "trisDialogue",
 			"portrait": "tristan"
 		},
 		{
@@ -89,6 +100,7 @@
 			"text": "With all due respect, son, shut up.",
 			"boxState": "normal",
 			"speed": 0.055,
+			"sound": "daveDialogue",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -96,6 +108,7 @@
 			"text": "MEANIE!!!",
 			"boxState": "normal",
 			"speed": 0.03,
+			"sound": "trisDialogue",
 			"portrait": "tristan"
 		},
 		{
@@ -103,6 +116,7 @@
 			"text": "Anyways, he's homeschooled so I make the rules.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "davehouse"
 		},
 		{
@@ -110,6 +124,7 @@
 			"text": "Oh. Ohhh, ohhhhhh!",
 			"boxState": "normal",
 			"speed": 0.07,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -117,6 +132,7 @@
 			"text": "So I BROKE MY PHONE FOR NO REASON!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -124,6 +140,7 @@
 			"text": "Yeah, and I have no idea why you thought that was a good idea.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "gfDialogue",
 			"portrait": "gfannoyed"
 		},
 		{
@@ -131,6 +148,7 @@
 			"text": "I'M SO STUPID!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambiangry"
 		},
 		{
@@ -138,6 +156,7 @@
 			"text": "Bambi, you may think you're stupid, but atleast you're not the people who got cryogenically frozen in my basement.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -145,6 +164,7 @@
 			"text": "Those idiots aren't gonna wake up until atleast the next millennium!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "daveinsanity"
 		},
 		{
@@ -159,6 +179,7 @@
 			"text": "Hahahaha... What?",
 			"boxState": "normal",
 			"speed": 0.085,
+			"sound": "daveDialogue",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -166,6 +187,7 @@
 			"text": "Uhhh, anyways lets get this picnic started!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "gfDialogue",
 			"portrait": "gfhappy"
 		},
 		{
@@ -173,6 +195,7 @@
 			"text": "I even brought N&Ns!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "gfDialogue",
 			"portrait": "gfhappy"
 		},
 		{
@@ -180,6 +203,7 @@
 			"text": "I brought Mint Chocolate Chip Cupcakes.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "davehouse"
 		},
 		{
@@ -187,6 +211,7 @@
 			"text": "I got NICE_POP.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambigrin"
 		},
 		{

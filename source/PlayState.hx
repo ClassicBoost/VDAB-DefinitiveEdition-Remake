@@ -5802,10 +5802,10 @@ class PlayState extends MusicBeatState
 						switch (curSong.toLowerCase()){
 					    	case 'disposition' | 'disposition_but_awesome':
 						      	if(ClientPrefs.flashing) camHUD.shake(0.0065, 0.1);
-								if (ClientPrefs.mechanicsDifficulty == 'HELL')
-						    	if(health > 0.05) health -= 0.02;
-								if (ClientPrefs.mechanicsDifficulty == 'Normal')
-								if (health > 0.4) health -= 0.01;
+							//	if (ClientPrefs.mechanicsDifficulty == 'HELL')
+						    //	if(health > 0.05) health -= 0.02;
+							//	if (ClientPrefs.mechanicsDifficulty == 'Normal')
+							//	if (health > 0.4) health -= 0.01;
 						     	if(gf.animOffsets.exists('scared')) {
 							    	gf.playAnim('scared', true); 
 							    }

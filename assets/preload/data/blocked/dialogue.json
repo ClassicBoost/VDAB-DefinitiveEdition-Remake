@@ -5,6 +5,7 @@
 			"text": "It sure was nice of that Dave guy to invite us to a farm for a picnic after nearly killing us both and almost destroying the world!",
 			"boxState": "normal",
 			"speed": 0.045,
+			"sound": "gfDialogue",
 			"portrait": "gfhappy"
 		},
 		{
@@ -12,6 +13,7 @@
 			"text": "Beephoo boopsa basphedi!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bfDialogue",
 			"portrait": "bf"
 		},
 		{
@@ -19,6 +21,7 @@
 			"text": "Who goes there??",
 			"boxState": "angry",
 			"speed": 0.04,
+			"sound": "bambiDialogue1",
 			"portrait": "bambiangry"
 		},
 		{
@@ -26,6 +29,7 @@
 			"text": "Beep?",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bfDialogue",
 			"portrait": "bf"
 		},
 		{
@@ -33,6 +37,7 @@
 			"text": "Hey! Are you trying to steal my corn?!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambiangry"
 		},
 		{
@@ -40,6 +45,7 @@
 			"text": "Bo beep ber-",
 			"boxState": "normal",
 			"speed": 0.04,
+			"sound": "bfDialogue",
 			"portrait": "bf"
 		},
 		{
@@ -47,6 +53,7 @@
 			"text": "I GONNA BLOCK YOU OUT OF MY FARM! You never coming back ever again you dirty ole' rodeo trash!",
 			"boxState": "normal",
 			"speed": 0.04,
+			"sound": "bambiDialogue1",
 			"portrait": "bambiangry"
 		},
 		{
@@ -54,6 +61,7 @@
 			"text": "Here we go again..",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "hgDialogue",
 			"portrait": "gfannoyed"
 		}
 	]

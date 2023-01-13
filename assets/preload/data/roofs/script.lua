@@ -2,7 +2,7 @@
 smoothZoomIG = false
 function onUpdate(elapsed)
     if smoothZoomIG then
-        cameraThingy = cameraThingy - 0.001
+        cameraThingy = cameraThingy - 0.003
 
         setProperty('defaultCamZoom', cameraThingy)
     end

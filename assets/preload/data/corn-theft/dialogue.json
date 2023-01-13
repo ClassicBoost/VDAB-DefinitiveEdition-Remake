@@ -12,6 +12,7 @@
 			"text": "Huh? Hello?",
 			"boxState": "normal",
 			"speed": 0.06,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -19,6 +20,7 @@
 			"text": "Hey Bambi, they're not trespassing.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -26,6 +28,7 @@
 			"text": "What?",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -33,6 +36,7 @@
 			"text": "I invited them over as an apology for nearly turning the world 3D.",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -40,6 +44,7 @@
 			"text": "Ok? Whatchu mean?",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -47,6 +52,7 @@
 			"text": "Bambi, listen-",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "daveDialogue",
 			"portrait": "davebambi-week"
 		},
 		{
@@ -54,6 +60,7 @@
 			"text": "I dunno what you trying to say, GOODBYE!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambigrin"
 		},
 		{
@@ -68,6 +75,7 @@
 			"text": "Uhhh...",
 			"boxState": "normal",
 			"speed": 0.12,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -75,6 +83,7 @@
 			"text": "Are you two using Dave invite as excuse to steal corn!?",
 			"boxState": "angry",
 			"speed": 0.04,
+			"sound": "bambiDialogue1",
 			"portrait": "bambiangry"
 		},
 		{
@@ -82,6 +91,7 @@
 			"text": "What?",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "gfDialogue",
 			"portrait": "gfconfused"
 		},
 		{
@@ -89,12 +99,14 @@
 			"text": "That's not what we're trying to do at all!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "gfDialogue",
 			"portrait": "gfannoyed"
 		},
 		{
 			"expression": "talk",
 			"text": "Bee buuhh bi beeen boo bi bayb",
 			"boxState": "normal",
+			"sound": "bfDialogue",
 			"speed": 0.05,
 			"portrait": "bf"
 		},
@@ -103,6 +115,7 @@
 			"text": "Ok, you know what-",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambiangry"
 		},
 		{
@@ -110,6 +123,7 @@
 			"text": "Don't win this one... or... or...",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambisad"
 		},
 		{
@@ -117,6 +131,7 @@
 			"text": "I'll break my phone!",
 			"boxState": "angry",
 			"speed": 0.04,
+			"sound": "bambiDialogue1",
 			"portrait": "bambiangry"
 		},
 		{
@@ -124,6 +139,7 @@
 			"text": "Yeah, I'll smash my phone and you'll get\\ngrounded!",
 			"boxState": "normal",
 			"speed": 0.05,
+			"sound": "bambiDialogue1",
 			"portrait": "bambigrin"
 		},
 		{
@@ -131,6 +147,7 @@
 			"text": "Bop..",
 			"boxState": "normal",
 			"speed": 0.09,
+			"sound": "bfDialogue",
 			"portrait": "bf"
 		}
 	]

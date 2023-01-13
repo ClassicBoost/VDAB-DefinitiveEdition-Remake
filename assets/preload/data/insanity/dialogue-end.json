@@ -5,6 +5,7 @@
 			"text": "Oh... oh no...",
 			"boxState": "normal",
 			"portrait": "davepre-polygonized",
+			"sound": "daveDialogue",
 			"speed": 0.5
 		},
 		{
@@ -12,6 +13,7 @@
 			"text": "Bep?",
 			"boxState": "normal",
 			"portrait": "bf",
+			"sound": "bfDialogue",
 			"speed": 0.05
 		}
 	]

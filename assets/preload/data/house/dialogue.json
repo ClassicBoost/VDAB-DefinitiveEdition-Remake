@@ -12,6 +12,7 @@
 			"text": "beep!",
 			"boxState": "normal",
 			"speed": 0.06,
+			"sound": "bfDialogue",
 			"portrait": "bf"
 		},
 		{
@@ -19,6 +20,7 @@
 			"text": "Wait, who are you two?",
 			"boxState": "normal",
 			"speed": 0.06,
+			"sound": "daveDialogue",
 			"portrait": "davehouse"
 		},
 		{
@@ -26,6 +28,7 @@
 			"text": "Oh wait! I saw you guys a couple days ago!",
 			"boxState": "normal",
 			"speed": 0.06,
+			"sound": "daveDialogue",
 			"portrait": "davehouse"
 		},
 		{
@@ -33,6 +36,7 @@
 			"portrait": "bf",
 			"boxState": "normal",
 			"expression": "talk",
+			"sound": "bfDialogue",
 			"text": "beep bop"
 		},
 		{
@@ -40,6 +44,7 @@
 			"portrait": "davehouse",
 			"boxState": "normal",
 			"expression": "talk",
+			"sound": "daveDialogue",
 			"text": "Oh, you want to sing? Let's go then!"
 		}
 	]
