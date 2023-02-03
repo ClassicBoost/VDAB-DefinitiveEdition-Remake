@@ -45,6 +45,7 @@ class ClientPrefs {
 	public static var colorBars:Bool = true;
 	public static var classicScore:Bool = false;
 	public static var mechanicsDifficulty:String = 'Normal';
+	public static var iconBopType:String = 'Dave';
 	public static var hitsoundVolume:Float = 0;
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = #if android true #else false #end;
@@ -161,6 +162,7 @@ class ClientPrefs {
 		FlxG.save.data.colorBars = colorBars;
 		FlxG.save.data.lateDamage = lateDamage;
 		FlxG.save.data.lang = lang;
+		FlxG.save.data.iconBopType = iconBopType;
 		FlxG.save.data.mechanicsDifficulty = mechanicsDifficulty;
 		FlxG.save.data.opponentSplashes = opponentSplashes;
 		FlxG.save.flush();
@@ -291,6 +293,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.scroll != null) {
 			scroll = FlxG.save.data.scroll;
+		}
+		if(FlxG.save.data.iconBopType != null) {
+			iconBopType = FlxG.save.data.iconBopType;
 		}
 		if(FlxG.save.data.noteSize != null) {
 			noteSize = FlxG.save.data.noteSize;

@@ -21,6 +21,7 @@ import flash.text.GridFitType;
  */
 class FlxSoundTray extends Sprite
 {
+	var text:TextField;
 	/**
 	 * Because reading any data from DisplayObject is insanely expensive in hxcpp, keep track of whether we need to update it or not.
 	 */
@@ -61,7 +62,7 @@ class FlxSoundTray extends Sprite
 		screenCenter();
 		addChild(tmp);
 
-		var text:TextField = new TextField();
+		text = new TextField();
 		text.width = tmp.width;
 		text.height = tmp.height;
 		text.multiline = true;
@@ -74,12 +75,12 @@ class FlxSoundTray extends Sprite
 		text.gridFitType = GridFitType.PIXEL;
 		#else
 		#end
-		var dtf:TextFormat = new TextFormat("Comic Sans MS Bold", 10, 0xffffff);
+		var dtf:TextFormat = new TextFormat("Comic Sans MS Bold", 8, 0xffffff);
 		dtf.align = TextFormatAlign.CENTER;
 		text.defaultTextFormat = dtf;
 		addChild(text);
-		text.text = "VOLUME";
-		text.y = 16;
+		text.text = "Volume - 100%";
+		text.y = 14;
 
 		var bx:Int = 10;
 		var by:Int = 14;
@@ -166,6 +167,9 @@ class FlxSoundTray extends Sprite
 				_bars[i].alpha = 0.5;
 			}
 		}
+		if (globalVolume != 10)
+		text.text = "Volume - " + globalVolume * 10 + "%";
+		else text.text = "Volume - Max";
 	}
 
 	public function screenCenter():Void

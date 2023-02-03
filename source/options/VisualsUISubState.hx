@@ -83,6 +83,14 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Icon Bop:',
+			"What icon bop should it use?",
+			'iconBopType',
+			'string',
+			'Dave',
+			['Dave', 'Gapple', 'Disabled']);
+		addOption(option);
+
 		var option:Option = new Option('Time Bar:',
 			"What should the Time Bar display?",
 			'timeBarType',

@@ -5,7 +5,7 @@
 				2,
 				0
 			],
-			"loop": false,
+			"loop": true,
 			"fps": 12,
 			"anim": "idle",
 			"indices": [],
@@ -54,21 +54,10 @@
 			"anim": "singRIGHT",
 			"loop": false,
 			"name": "right"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"indices": [],
-			"fps": 12,
-			"anim": "idle-loop",
-			"loop": true,
-			"name": "idle"
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/Bambi-Unfair",
+	"image": "characters/unfair_bambi",
 	"position": [
 		-70,
 		-110

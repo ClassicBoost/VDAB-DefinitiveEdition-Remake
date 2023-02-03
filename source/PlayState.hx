@@ -363,6 +363,8 @@ class PlayState extends MusicBeatState
 	var halloweenBG:BGSprite;
 	var halloweenWhite:BGSprite;
 
+	public var forceLose:Bool = false;
+
 	var evilTrail:FlxTrail; // why the fuck doesnt fnf have this var by default is stupidd dofiodofoidsfo safduikghiuysdarfhiuyfghsdriyughdiuhgulifdshgluifdfhliuylhuiyjgrfd
 
 	var phillyCityLights:FlxTypedGroup<BGSprite>;
@@ -401,6 +403,8 @@ class PlayState extends MusicBeatState
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var bgGhouls:BGSprite;
 
+	public var modchart:ExploitationModchartType;
+
 	var arrowJunks:Array<Array<Float>> = [];
 
 	public var songScore:Int = 0;
@@ -434,6 +438,8 @@ class PlayState extends MusicBeatState
 	public var daveExpressionSplitathon:Character;
 
 	public var defaultCamZoom:Float = 1.05;
+	
+	var mcStarted:Bool = false;
 
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
@@ -521,6 +527,9 @@ class PlayState extends MusicBeatState
 		instakillOnMiss = ClientPrefs.getGameplaySetting('instakill', false);
 		practiceMode = ClientPrefs.getGameplaySetting('practice', false);
 		cpuControlled = ClientPrefs.getGameplaySetting('botplay', false);
+
+		forceLose = false;
+		mcStarted = false;
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
@@ -618,6 +627,9 @@ class PlayState extends MusicBeatState
 		if(PlayState.SONG.stage == null || PlayState.SONG.stage.length < 1) {
 			switch (songName)
 			{
+				case 'exploitation':
+					modchart = ExploitationModchartType.None;
+					curStage = '3dFucked';
 				case 'house' | 'insanity' | 'warmup':
 					curStage = 'houseDay';
 					characterCountdown = 'dave';
@@ -1067,9 +1079,10 @@ class PlayState extends MusicBeatState
 			{
 				defaultCamZoom = 0.85;
 				curStage = '3dScary';
-				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/scarybg'));
+				var bg:FlxSprite = new FlxSprite(0, -200).loadGraphic(Paths.image('dave/scarybg'));
 				bg.antialiasing = true;
-				bg.scrollFactor.set(0.6, 0.6);
+				bg.setGraphicSize(Std.int(bg.width * 3));
+				bg.scrollFactor.set(0.1, 0.1);
 				bg.active = true;
 
 				add(bg);
@@ -2028,7 +2041,7 @@ class PlayState extends MusicBeatState
 	    	scoreTxt = new FlxText(0, healthBarBG.y + 30, FlxG.width, "", 20);
 		    scoreTxt.setFormat(Paths.font("comic-sans.ttf"), 18, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 	    	scoreTxt.borderSize = 1.5;
-		} else if(ClientPrefs.classicScore) {
+		} else {
 			scoreTxt = new FlxText(0, healthBarBG.y + 40, FlxG.width, "", 20);
 			scoreTxt.setFormat(Paths.font("comic-sans.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 			scoreTxt.borderSize = 1.5;
@@ -5369,7 +5382,7 @@ class PlayState extends MusicBeatState
 				moveCameraSection(Std.int(curStep / 16));
 			}
 		
-		if (curSong.toLowerCase() == 'callback' || curSong.toLowerCase() == 'sunshine') {
+		if ((curSong.toLowerCase() == 'callback' || curSong.toLowerCase() == 'sunshine') || ClientPrefs.iconBopType == 'Gapple') {
 			iconP1.centerOffsets();
 			iconP2.centerOffsets();
 		} else {
@@ -5387,6 +5400,7 @@ class PlayState extends MusicBeatState
 		if (health > 2)
 			health = 2;
 
+		if (!forceLose) {
 		if (healthBar.percent < 20)
 		{
 			iconP1.animation.curAnim.curFrame = 1;
@@ -5409,6 +5423,10 @@ class PlayState extends MusicBeatState
 			iconP2.animation.curAnim.curFrame = 2;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
+		} else {
+			iconP1.animation.curAnim.curFrame = 1;
+			iconP2.animation.curAnim.curFrame = 2;
+		}
 
 	/*	if(SONG.song.toLowerCase() == "ok")
 			{
@@ -5833,6 +5851,10 @@ class PlayState extends MusicBeatState
 					     		health -= (healthtolower / 6);
 						     	if(ClientPrefs.flashing) camHUD.shake(0.0045, 0.1);
 								if(ClientPrefs.flashing) FlxG.camera.shake(0.0075, 0.1);
+								forceLose = true;
+							case 'exploitation':
+								if (health > 0.1) health -= 0.0125;
+								forceLose = true;
 				     		case 'disruption':
 						    	health -= healthtolower / 2.65;
 					    		if(ClientPrefs.flashing) camHUD.shake(0.0045, 0.1);
@@ -8568,6 +8590,11 @@ class PlayState extends MusicBeatState
 						shakeCam = false;
 						camZooming = false;
 				}
+			case 'exploitation':
+				switch (curStep) {
+					case 128:
+						mcStarted = true;
+				}
 		}
 
 		if(curStep == lastStepHit) {
@@ -8589,6 +8616,8 @@ class PlayState extends MusicBeatState
 
 	    switch (SONG.song.toLowerCase())
      	{
+			case 'exploitation':
+
 			case 'reality breaking':
 				switch (curBeat)
 				{
@@ -8659,6 +8688,8 @@ class PlayState extends MusicBeatState
 							camZoomSnap = false;
 					}
 	    }
+
+		forceLose = false;
 
 		if (curStage == 'bedroom' && curBeat % 2 == 0) tristanInBotTrot.animation.play('idle');
 
@@ -8762,7 +8793,7 @@ class PlayState extends MusicBeatState
 
 		//icon squish funny haha
 		if (curSong.toLowerCase() != 'overdrive' && curSong.toLowerCase() != 'disposition-but-awesome') {
-		if (curSong.toLowerCase() == 'callback' || curSong.toLowerCase() == 'sunshine') {
+		if ((curSong.toLowerCase() == 'callback' || curSong.toLowerCase() == 'sunshine') || ClientPrefs.iconBopType == 'Gapple') {
 			if (curBeat % gfSpeed == 0) {
 				curBeat % (gfSpeed * 2) == 0 ? {
 					iconP1.scale.set(1.1, 0.8);
@@ -8784,7 +8815,7 @@ class PlayState extends MusicBeatState
 				iconP1.updateHitbox();
 				iconP2.updateHitbox();
 			}
-		} else {
+		} else if (ClientPrefs.iconBopType == 'Dave') {
 		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * (funny + 0.1))),Std.int(iconP1.height - (25 * funny)));
 		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * ((2 - funny) + 0.1))),Std.int(iconP2.height - (25 * ((2 - funny) + 0.1))));
 
@@ -8981,10 +9012,9 @@ class PlayState extends MusicBeatState
 		    	if (goods > 0) ratingFC = " [GFC]";
 	     		if (bads > 0) ratingFC = " [FC]";
 				 if (shits > 0) ratingFC = " [FC-]";
-		    	if (songMisses > 0 && songMisses < 10) ratingFC = " [SDCB]";
-	     		if (songMisses >= 10) ratingFC = " [CB]";
-		    	if (songMisses >= 65) ratingFC = " [Skill issue]";
-	     		if (songMisses >= 500) ratingFC = " [what]";
+	     		if (songMisses > 0 && songMisses < 65) ratingFC = "";
+		    	if (songMisses >= 65 && songMisses < 500) ratingFC = " [Skill issue]";
+	     		if (songMisses >= 500 && songMisses < 1000) ratingFC = " [what]";
 	    		else if (songMisses >= 1000) ratingFC = " [wtf?]";
     		}
 	    	setOnLuas('rating', ratingPercent);
@@ -9235,4 +9265,8 @@ class PlayState extends MusicBeatState
 
 	var curLight:Int = 0;
 	var curLightEvent:Int = 0;
+}
+enum ExploitationModchartType
+{
+	None; Cheating; Figure8; ScrambledNotes; Cyclone; Unfairness; Jitterwave; PingPong; Sex;
 }

@@ -1,0 +1,39 @@
+{
+	"storyName": "BAMBI'S MASTER WEEK!",
+	"hideFreeplay": true,
+	"weekBackground": "masterweek",
+	"weekBefore": "week4",
+	"freeplayColor": [
+		146,
+		113,
+		253
+	],
+	"startUnlocked": true,
+	"weekCharacters": [
+		"",
+		"",
+		""
+	],
+	"songs": [
+		[
+			"Supernovae",
+			"bambiJoke",
+			[
+				0,
+				195,
+				18
+			]
+		],
+		[
+			"Glitch",
+			"bambiJoke",
+			[
+				0,
+				195,
+				18
+			]
+		]
+	],
+	"hideStoryMode": false,
+	"weekName": "BAMBI'S MASTER WEEK!"
+}
