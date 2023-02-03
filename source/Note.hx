@@ -397,6 +397,11 @@ class Note extends FlxSprite
 		animation.addByPrefix('blueScroll', 'blue0');
 		animation.addByPrefix('purpleScroll', 'purple0');
 
+		animation.addByPrefix('purple glow', 'Purple Active');
+		animation.addByPrefix('green glow', 'Green Active');
+		animation.addByPrefix('red glow', 'Red Active');
+		animation.addByPrefix('blue glow', 'Blue Active');
+
 		if (isSustainNote)
 		{
 			animation.addByPrefix('purpleholdend', 'pruple end hold');
@@ -415,7 +420,7 @@ class Note extends FlxSprite
 		updateHitbox();
 	}
 
-	function loadPixelNoteAnims() {
+	function loadPixelNoteAnims() {		
 		if(isSustainNote) {
 			animation.add('purpleholdend', [PURP_NOTE + 4]);
 			animation.add('greenholdend', [GREEN_NOTE + 4]);
@@ -492,6 +497,20 @@ class Note extends FlxSprite
 
 			if (strumTime <= Conductor.songPosition)
 				wasGoodHit = true;
+		}
+
+		if (canBeHit && !isSustainNote && animation.curAnim.name.contains("Scroll")){
+			switch (noteData)
+			{
+				case 2:
+					animation.play('green glow');
+				case 3:
+					animation.play('red glow');
+				case 1:
+					animation.play('blue glow');
+				case 0:
+					animation.play('purple glow');
+			}
 		}
 
 		if (tooLate)
