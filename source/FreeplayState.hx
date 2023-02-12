@@ -130,6 +130,7 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Old-Furiosity'], 2,['davesharted']);
 					addWeek(['Old-Blocked', 'Old-Corn-Theft', 'beta-maze', 'Old-Maze'], 3, ['bamberfunny']);
 					addWeek(['Old-Splitathon'], 12, ['splitathon-old']);
+					addWeek(['Supernovae-OG', 'Glitch-OG'], 3, ['bambiJoke']);
 				case 'joke':
                     addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
 					addWeek(['Roofs'], 3, ['baldi']);
@@ -378,7 +379,7 @@ class FreeplayState extends MusicBeatState
 			switch (curSelected) {
 				case 0,4,5,6:
 				songDiff.animation.play('normal', true);
-				case 1,2,3,7:
+				case 1,2,3,7,8,9:
 				songDiff.animation.play('hard', true);
 			}
 		}
@@ -439,7 +440,7 @@ class FreeplayState extends MusicBeatState
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new FreeplayState());
-	
+				destroyFreeplayVocals();
 			if (accepted && allowinputShit)
 			{
 				var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);

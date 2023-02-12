@@ -633,7 +633,7 @@ class PlayState extends MusicBeatState
 				case 'house' | 'insanity' | 'warmup':
 					curStage = 'houseDay';
 					characterCountdown = 'dave';
-				case 'supernovae':
+				case 'supernovae','supernovae-og':
 					curStage = 'houseDay';
 					characterCountdown = 'dave';
 				case 'old-house' | 'old-insanity':
@@ -642,7 +642,7 @@ class PlayState extends MusicBeatState
 				case 'bonus-song' | 'rascal':
 					curStage = 'houseNight';
 					characterCountdown = 'dave';
-				case 'glitch':
+				case 'glitch','glitch-og':
 					curStage = 'houseNight';
 				case 'vs-dave-christmas':
 					curStage = 'houseChristmas';
@@ -2152,11 +2152,11 @@ class PlayState extends MusicBeatState
 		var credits:String;
 		switch (SONG.song.toLowerCase())
 		{
-			case 'supernovae' | 'supernovae-uber':
+			case 'supernovae' | 'supernovae-uber' | 'supernovae-og':
 				credits = 'Original Song made by ArchWk!';
 			case 'fast-food':
 				credits = 'Song Made by randy the slope!';
-			case 'glitch':
+			case 'glitch','glitch-og':
 				credits = 'Original Song made by DeadShadow and PixelGH!';
 			case 'mealie':
 				credits = 'Song made by Alexander Cooper 19!';
@@ -2273,9 +2273,12 @@ class PlayState extends MusicBeatState
 		switch (SONG.song.toLowerCase())
 		{
 			// add moldy's songs here
-			case 'warmup' | 'house' | 'insanity' | 'furiosity' | 'bonus-song' | 'polygonized' | 'blocked' | 'corn-theft' | 'splitathon' | 'cheating' | 'unfairness' | 'old-house' | 'old-insanity' | 'old-furiosity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'old-splitathon', 'beta-maze':
+			case 'warmup' | 'house' | 'insanity' | 'furiosity' | 'bonus-song' | 'polygonized' | 'blocked' | 'corn-theft' | 'cheating' | 'unfairness' | 'old-house' | 'old-insanity' | 'old-furiosity' | 'old-blocked' | 'old-corn-theft' | 'old-maze' | 'beta-maze':
 		    	composersWatermark = 'MoldyGH';
 			// add pyramix's songs here
+			case 'splitathon','old-splitathon':
+				composersWatermark = 'MoldyGH';
+				characterCountdown = 'dave';
 			case 'maze':
 				characterCountdown = 'bambi';
 				composersWatermark = 'MoldyGH';
@@ -8581,6 +8584,30 @@ class PlayState extends MusicBeatState
 						shakeCam = false;
 				}
 			case 'glitch':
+				switch (curStep) {
+					case 16 | 719 | 1167:
+						defaultCamZoom = 1;
+					case 80 | 335 | 588 | 1103:
+						defaultCamZoom = 0.8;
+					case 584 | 1039:
+						defaultCamZoom = 1.2;
+					case 272 | 975:
+						defaultCamZoom = 1.1;
+					case 464:
+						defaultCamZoom = 1;
+					case 848:
+						shakeCam = false;
+						defaultCamZoom = 1;
+					case 132 | 612 | 740 | 771 | 836:
+						shakeCam = true;
+						defaultCamZoom = 1.2;
+					case 144 | 624 | 752 | 784:
+						shakeCam = false;
+						defaultCamZoom = 0.8;
+					case 1231:
+						defaultCamZoom = 0.8;
+				}
+			case 'glitch-og':
 				switch (curStep)
 				{
 					case 480 | 681 | 1390 | 1445 | 1515 | 1542 | 1598 | 1655:
