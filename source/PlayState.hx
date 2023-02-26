@@ -8843,6 +8843,11 @@ class PlayState extends MusicBeatState
 				iconP2.updateHitbox();
 			}
 		} else if (ClientPrefs.iconBopType == 'Dave') {
+		FlxTween.cancelTweensOf(iconP1);
+		FlxTween.cancelTweensOf(iconP2);
+		FlxTween.angle(iconP1, -20, 0, Conductor.crochet / 1000, {ease: FlxEase.quadOut});
+		FlxTween.angle(iconP2, 20, 0, Conductor.crochet / 1000, {ease: FlxEase.quadOut});
+
 		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * (funny + 0.1))),Std.int(iconP1.height - (25 * funny)));
 		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * ((2 - funny) + 0.1))),Std.int(iconP2.height - (25 * ((2 - funny) + 0.1))));
 
