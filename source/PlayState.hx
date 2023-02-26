@@ -128,6 +128,8 @@ class PlayState extends MusicBeatState
 	public var gfMap:Map<String, Character> = new Map<String, Character>();
 	#end
 
+	public var nomissesallowed:FlxText;
+
 	public var BF_X:Float = 770;
 	public var BF_Y:Float = 100;
 	public var DAD_X:Float = 100;
@@ -2268,6 +2270,16 @@ class PlayState extends MusicBeatState
 		shartingTxt.borderSize = 4;
 		shartingTxt.borderQuality = 2;
 		if(chartingMode) insert(members.indexOf(strumLineNotes), shartingTxt);
+
+		nomissesallowed = new FlxText(healthBarBG.x + healthBarBG.width / 2 - 75, healthBarBG.y + (ClientPrefs.downScroll ? 100 : -100), 0, "NO MISSING ALLOWED", 20);
+		nomissesallowed.setFormat(Paths.font("comic-sans.ttf"), 32, FlxColor.RED, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		nomissesallowed.scrollFactor.set();
+		nomissesallowed.screenCenter(X);
+		nomissesallowed.borderSize = 4;
+		nomissesallowed.borderQuality = 2;
+		nomissesallowed.visible = false;
+		nomissesallowed.cameras = [camHUD];
+		add(nomissesallowed);
 
 		var composersWatermark:String;
 		switch (SONG.song.toLowerCase())
@@ -5375,7 +5387,7 @@ class PlayState extends MusicBeatState
 		updateScore();
 		RecalculateRating();
 
-		var iconSmooth:Int = 12;
+		var iconSmooth:Int = 20;
 
 		engineBar.alpha = songWatermark.alpha;
 		engineBar.visible = songWatermark.visible;
@@ -7966,6 +7978,9 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		allSicks = false;
 
+		if (nomissesallowed.visible == true)
+			health = -1;
+
 		if(!practiceMode) songScore -= 10;
 		if(!endingSong) {
 			songMisses++;
@@ -8667,10 +8682,13 @@ class PlayState extends MusicBeatState
 						if(ClientPrefs.chromaticAberration) stupidBool = true;
 						FlxG.camera.flash(FlxColor.WHITE, 0.25);
 						if(ClientPrefs.chromaticAberration) doneloll2 = true;
+						if(ClientPrefs.mechanicsDifficulty == 'HELL') nomissesallowed.visible = true;
 					case 384:
 						if(ClientPrefs.chromaticAberration) stupidBool = false;
 						FlxG.camera.flash(FlxColor.WHITE, 0.25);
 						if(ClientPrefs.chromaticAberration) doneloll2 = false;
+						nomissesallowed.visible = false;
+						if(ClientPrefs.mechanicsDifficulty == 'HELL') health = 0.01;
 					case 640:
 						if(ClientPrefs.chromaticAberration) stupidBool = false;
 						FlxG.camera.flash(FlxColor.WHITE, 0.25);
@@ -8845,8 +8863,8 @@ class PlayState extends MusicBeatState
 		} else if (ClientPrefs.iconBopType == 'Dave') {
 		FlxTween.cancelTweensOf(iconP1);
 		FlxTween.cancelTweensOf(iconP2);
-		FlxTween.angle(iconP1, -20, 0, Conductor.crochet / 1000, {ease: FlxEase.quadOut});
-		FlxTween.angle(iconP2, 20, 0, Conductor.crochet / 1000, {ease: FlxEase.quadOut});
+		FlxTween.angle(iconP1, -20, 0, 0.3, {ease: FlxEase.quadOut});
+		FlxTween.angle(iconP2, 20, 0, 0.3, {ease: FlxEase.quadOut});
 
 		iconP1.setGraphicSize(Std.int(iconP1.width + (50 * (funny + 0.1))),Std.int(iconP1.height - (25 * funny)));
 		iconP2.setGraphicSize(Std.int(iconP2.width + (50 * ((2 - funny) + 0.1))),Std.int(iconP2.height - (25 * ((2 - funny) + 0.1))));
