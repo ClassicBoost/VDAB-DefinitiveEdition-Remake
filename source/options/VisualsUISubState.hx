@@ -83,6 +83,20 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
+		var option:Option = new Option('Randomized Engine Name',
+			"If checked, everytime the song loads the engine name is randomized.",
+			'randomizedEngine',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Note Glow',
+			"If checked, notes will glow if they are able to be hit.",
+			'noteGlow',
+			'bool',
+			true);
+		addOption(option);
+
 		var option:Option = new Option('Icon Bop:',
 			"What icon bop should it use?",
 			'iconBopType',

@@ -499,7 +499,7 @@ class Note extends FlxSprite
 				wasGoodHit = true;
 		}
 
-		if (canBeHit && !isSustainNote && animation.curAnim.name.contains("Scroll")){
+		if (ClientPrefs.noteGlow && canBeHit && !isSustainNote && animation.curAnim.name.contains("Scroll")){
 			switch (noteData)
 			{
 				case 2:

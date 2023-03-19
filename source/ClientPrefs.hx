@@ -44,10 +44,12 @@ class ClientPrefs {
 	public static var ratinginHud:Bool = true;
 	public static var colorBars:Bool = true;
 	public static var classicScore:Bool = false;
+	public static var randomizedEngine:Bool = true;
 	public static var mechanicsDifficulty:String = 'Normal';
 	public static var iconBopType:String = 'Dave';
 	public static var hitsoundVolume:Float = 0;
 	public static var healthBarAlpha:Float = 1;
+	public static var noteGlow:Bool = true;
 	public static var controllerMode:Bool = #if android true #else false #end;
 	public static var hitsoundtype:String = 'vs-dave';
 	public static var timeBarType:String = 'Song and Time Left';
@@ -163,8 +165,10 @@ class ClientPrefs {
 		FlxG.save.data.lateDamage = lateDamage;
 		FlxG.save.data.lang = lang;
 		FlxG.save.data.iconBopType = iconBopType;
+		FlxG.save.data.randomizedEngine = randomizedEngine;
 		FlxG.save.data.mechanicsDifficulty = mechanicsDifficulty;
 		FlxG.save.data.opponentSplashes = opponentSplashes;
+		FlxG.save.data.noteGlow = noteGlow;
 		FlxG.save.flush();
 
 		var save:FlxSave = new FlxSave();
@@ -323,6 +327,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.chromaticAberration != null) {
 			chromaticAberration = FlxG.save.data.chromaticAberration;
+		}
+		if(FlxG.save.data.randomizedEngine != null) {
+			randomizedEngine = FlxG.save.data.randomizedEngine;
+		}
+		if(FlxG.save.data.noteGlow != null) {
+			noteGlow = FlxG.save.data.noteGlow;
 		}
 		if(FlxG.save.data.gameplaySettings != null)
 		{

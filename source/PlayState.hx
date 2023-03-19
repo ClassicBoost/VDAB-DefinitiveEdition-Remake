@@ -1904,10 +1904,10 @@ class PlayState extends MusicBeatState
 			prEteSechDialogueJson = DialogueBoxPsych.parseDialogue(SUtil.getPath() + file);
 		}
 
-		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai/3d/vs dave dialogue 
+		var file:String = Paths.txt(songName + '/' + 'dialogue'); //Checks for vanilla/Senpai/3d/vs dave dialogue 
 		// this one is only used for barcode so i dont think it will be necessary to add dialogs
 
-		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai/3d/vs dave dialogue
+		var file:String = Paths.txt(songName + '/' + 'dialogue'); //Checks for vanilla/Senpai/3d/vs dave dialogue
 		if (OpenFlAssets.exists(file)) {
 			dialogue = CoolUtil.coolTextFile(SUtil.getPath() + file);
 		}
@@ -2189,8 +2189,9 @@ class PlayState extends MusicBeatState
 			default:
 				credits = '';
 		}
-		var randomThingy:Int = FlxG.random.int(0, 10);
+		var randomThingy:Int = FlxG.random.int(0, 11);
 		var engineName:String = 'stupid';
+		if (ClientPrefs.randomizedEngine) {
 		switch(randomThingy)
 	    {
 			case 0:
@@ -2215,10 +2216,15 @@ class PlayState extends MusicBeatState
 				engineName = 'Jeff '; 
 			case 10:
 				engineName = 'Psych Forever ';
+			case 11:
+				engineName = 'Forever ';
 		/*	case 10:
 				engineName = 'Ringi ';*/
 		/*	case 11:
 				engineName = 'Candu ';*/ //  not adding these guys till the next update lololo
+		}
+		} else {
+			engineName = 'Forever ';
 		}
 		var creditsText:Bool = credits != '';
 		var textYPos:Float = healthBarBG.y + 52;
@@ -2234,7 +2240,7 @@ class PlayState extends MusicBeatState
 		add(creditsWatermark);
 		creditsWatermark.cameras = [camHUD];
 
-		var engineDisplay:String = '${(isPixelStage == true ? "v4.1.1" : isPixelStage == false ? engineName + "Engine Legacy v4.1.1" + " (PE v" + MainMenuState.psychEngineVersion + ")" : "")}';
+		var engineDisplay:String = '${(isPixelStage == true ? "v0.3.1" : isPixelStage == false ? engineName + "Engine Legacy v0.3.1" : "")}';
 
 		engineBar = new FlxText(0, 0, 0, engineDisplay); // make it go on the top right, like in Forever Engine 0.3.1
 		engineBar.setFormat(Paths.font("comic-sans.ttf"), 18, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -2449,12 +2455,12 @@ class PlayState extends MusicBeatState
 		// SONG SPECIFIC SCRIPTS
 		#if LUA_ALLOWED
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [SUtil.getPath() + Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
+		var foldersToCheck:Array<String> = [SUtil.getPath() + Paths.getPreloadPath('songs/' + Paths.formatToSongPath(SONG.song) + '/')];
 
 		#if MODS_ALLOWED
-		foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song) + '/'));
+		foldersToCheck.insert(0, Paths.mods('songs/' + Paths.formatToSongPath(SONG.song) + '/'));
 		if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
-			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/data/' + Paths.formatToSongPath(SONG.song) + '/'));
+			foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/songs/' + Paths.formatToSongPath(SONG.song) + '/'));
 		#end
 
 		for (folder in foldersToCheck)
@@ -2478,7 +2484,7 @@ class PlayState extends MusicBeatState
 		{
 			switch (daSong)
 			{
-				case 'senpai' | 'roses' | 'thorns' | 'polygonized' | 'furiosity' | 'cheating' | 'unfairness':
+			/*	case 'senpai' | 'roses' | 'thorns' | 'polygonized' | 'furiosity' | 'cheating' | 'unfairness':
 					if(daSong == 'roses') FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
 
@@ -2492,13 +2498,14 @@ class PlayState extends MusicBeatState
 							dialogBullshitStart();
 		 
 						case 'maze':
-							startVideoDIALOGUE('bambiCutscene'); 
+							startVideoDIALOGUE('bambiCutscene');*/
 
 						case 'roundabout' | 'upheaval':
 							startSongNoCountDown(); // replace this l8 when there's dialogue
 
 					default:
-			    		startCountdown();
+						startSongNoCountDown();
+			    	//	startCountdown();
 			}
 			seenCutscene = true;
 		} else {
@@ -7414,16 +7421,9 @@ class PlayState extends MusicBeatState
 	
 				if(ClientPrefs.scoreZoom)
 				{
-					if(scoreTxtTween != null) {
-						scoreTxtTween.cancel();
-					}
-					scoreTxt.scale.x = 1.075;
-					scoreTxt.scale.y = 1.075;
-					scoreTxtTween = FlxTween.tween(scoreTxt.scale, {x: 1, y: 1}, 0.1, {
-						onComplete: function(twn:FlxTween) {
-							scoreTxtTween = null;
-						}
-					});
+					FlxTween.cancelTweensOf(scoreTxt);
+					scoreTxt.scale.set(1.075, 1.075);
+					FlxTween.tween(scoreTxt, {"scale.x": 1, "scale.y": 1}, 0.25, {ease: FlxEase.cubeOut});
 				}
 			}
 
