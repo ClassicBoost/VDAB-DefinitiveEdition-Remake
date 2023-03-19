@@ -3419,6 +3419,14 @@ class PlayState extends MusicBeatState
 				swagCounter += 1;
 	     	}, 5);
 
+			FlxTween.tween(composersText, {y:-100}, 2, {
+				onComplete: function(tween:FlxTween)
+				{
+					remove(composersText);
+				},
+				ease: FlxEase.circOut
+			});
+
 			strumLineNotes.forEach(function(note)
 			{
 				quickSpin(note);
