@@ -337,6 +337,9 @@ class PlayState extends MusicBeatState
 	var score:Int = 350;
 	var freeplayScore:Int = 350;
 
+	public var lerpScore:Float = 0.0;
+	public var lerpHealth:Float = 1;
+
 	var scoreMultipliersThing:Array<Float> = [1, 1, 1, 1];
 
 	var redSky:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/redsky'));
@@ -637,7 +640,10 @@ class PlayState extends MusicBeatState
 					characterCountdown = 'dave';
 				case 'supernovae','supernovae-og':
 					curStage = 'houseDay';
-					characterCountdown = 'dave';
+					characterCountdown = 'bambi';
+				case 'master':
+					curStage = 'master';
+					characterCountdown = 'bambi';
 				case 'old-house' | 'old-insanity':
 					curStage = 'houseOlderDay';
 					characterCountdown = 'dave';
@@ -646,6 +652,7 @@ class PlayState extends MusicBeatState
 					characterCountdown = 'dave';
 				case 'glitch','glitch-og':
 					curStage = 'houseNight';
+					characterCountdown = 'bambi';
 				case 'vs-dave-christmas':
 					curStage = 'houseChristmas';
 					characterCountdown = 'bambi';
@@ -932,6 +939,15 @@ class PlayState extends MusicBeatState
 			    	UsingNewCam = true;
 				}
 			}
+
+		case 'master':
+			var space:BGSprite = new BGSprite('backgrounds/shared/sky_space', -1724, -971, 1.2, 1.2);
+			space.setGraphicSize(Std.int(space.width * 10));
+			space.antialiasing = false;
+			add(space);
+
+			var land:BGSprite = new BGSprite('backgrounds/dave-house/land', 675, 555, 0.9, 0.9);
+			add(land);
 
 		case '3dPissed':
 			{
@@ -1971,6 +1987,7 @@ class PlayState extends MusicBeatState
 		timeTxt.screenCenter(X);
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
+		timeTxt.antialiasing = true;
 		timeTxt.visible = showTime;
 		if(ClientPrefs.downScroll) timeTxt.y = FlxG.height - 55;
 		if(ClientPrefs.timeBarType == 'Song Name')
@@ -2020,8 +2037,9 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.downScroll) healthBarBG.y = 50;
 
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
-			'health', 0, 2);
+			'lerpHealth', 0, 2);
 		healthBar.scrollFactor.set();
+		healthBar.numDivisions = 1000;
 		// healthBar
 		healthBar.visible = !ClientPrefs.hideHud;
 		add(healthBar);
@@ -2050,6 +2068,7 @@ class PlayState extends MusicBeatState
 		}
 		scoreTxt.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		scoreTxt.scrollFactor.set();
+		scoreTxt.antialiasing = true;
 		scoreTxt.screenCenter(X);
 		add(scoreTxt);
 
@@ -2058,6 +2077,7 @@ class PlayState extends MusicBeatState
 		judgementCounter.borderSize = 2;
 		judgementCounter.borderQuality = 2;
 		judgementCounter.scrollFactor.set();
+		judgementCounter.antialiasing = true;
 		judgementCounter.cameras = [camHUD];
 		judgementCounter.screenCenter(Y);
 		judgementCounter.text = 'Sicks: ${sicks}\nGoods: ${goods}\nBads: ${bads}\nShits: ${shits}\nMisses: ${songMisses}\n';
@@ -2237,6 +2257,7 @@ class PlayState extends MusicBeatState
 		creditsWatermark.setFormat(Paths.font("comic-sans.ttf"), 14, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		creditsWatermark.scrollFactor.set();
 		creditsWatermark.borderSize = 1.25;
+		creditsWatermark.antialiasing = true;
 		add(creditsWatermark);
 		creditsWatermark.cameras = [camHUD];
 
@@ -2249,6 +2270,7 @@ class PlayState extends MusicBeatState
 		engineBar.visible = !ClientPrefs.hideHud;
 		engineBar.cameras = [camHUD];
 		engineBar.borderSize = 2;
+		engineBar.antialiasing = true;
 		engineBar.setPosition(FlxG.width - (engineBar.width + 5), 5);
 		add(engineBar);
 
@@ -2258,6 +2280,7 @@ class PlayState extends MusicBeatState
 		songWatermark.setFormat(Paths.font("comic-sans.ttf"), 14, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		songWatermark.scrollFactor.set();
 		songWatermark.borderSize = 1.25;
+		songWatermark.antialiasing = true;
 		songWatermark.visible = !ClientPrefs.hideHud;
 		add(songWatermark);
 
@@ -2274,6 +2297,7 @@ class PlayState extends MusicBeatState
 		shartingTxt.scrollFactor.set();
 		shartingTxt.screenCenter(X);
 		shartingTxt.borderSize = 4;
+		shartingTxt.antialiasing = true;
 		shartingTxt.borderQuality = 2;
 		if(chartingMode) insert(members.indexOf(strumLineNotes), shartingTxt);
 
@@ -2283,6 +2307,7 @@ class PlayState extends MusicBeatState
 		nomissesallowed.screenCenter(X);
 		nomissesallowed.borderSize = 4;
 		nomissesallowed.borderQuality = 2;
+		nomissesallowed.antialiasing = true;
 		nomissesallowed.visible = false;
 		nomissesallowed.cameras = [camHUD];
 		add(nomissesallowed);
@@ -2369,6 +2394,7 @@ class PlayState extends MusicBeatState
 		ballsText.borderSize = 4;
 		ballsText.borderQuality = 2;
 		ballsText.scrollFactor.set();
+		ballsText.antialiasing = true;
 		ballsText.cameras = [camHUD];
         ballsText.text = SONG.song;
 		add(ballsText);
@@ -2377,6 +2403,7 @@ class PlayState extends MusicBeatState
 		composersText.setFormat(Paths.font("comic-sans.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		composersText.borderSize = 4;
 		composersText.borderQuality = 2;
+		composersText.antialiasing = true;
 		composersText.scrollFactor.set();
 		composersText.cameras = [camHUD];
 		if(ClientPrefs.lang == 'English') {
@@ -2504,8 +2531,7 @@ class PlayState extends MusicBeatState
 							startSongNoCountDown(); // replace this l8 when there's dialogue
 
 					default:
-						startSongNoCountDown();
-			    	//	startCountdown();
+			    		startCountdown();
 			}
 			seenCutscene = true;
 		} else {
@@ -5402,6 +5428,14 @@ class PlayState extends MusicBeatState
 		updateScore();
 		RecalculateRating();
 
+		lerpScore = Math.floor(FlxMath.lerp(lerpScore, songScore, CoolUtil.boundTo(elapsed * 24, 0, 1)));
+		lerpHealth = FlxMath.lerp(lerpHealth, health, CoolUtil.boundTo(elapsed * 9, 0, 1));
+
+		if (Math.abs(lerpScore - songScore) <= 10)
+			lerpScore = songScore;
+		if (Math.abs(lerpHealth - health) <= 0.01)
+			lerpHealth = health;
+
 		var iconSmooth:Int = 20;
 
 		engineBar.alpha = songWatermark.alpha;
@@ -6237,13 +6271,13 @@ class PlayState extends MusicBeatState
 			if(!ClientPrefs.classicScore) {
 			//	scoreTxt.text =  'NPS: ' + nps
 			//	+ divider +'Score: ' + songScore
-				scoreTxt.text = 'Score: ' + songScore
+				scoreTxt.text = 'Score: ' + Math.floor(lerpScore)
 				+ divider + 'Accuracy: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ratingFC
 				+ divider + 'Combo Breaks: ' + songMisses
 				+ divider + 'Rank: ' + ratingName;
 			}
 			if(ClientPrefs.classicScore) {
-				scoreTxt.text = 'Score:' + songScore + ' | Misses:' + songMisses + ' | Accuracy:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%';
+				scoreTxt.text = 'Score:' + Math.floor(lerpScore) + ' | Misses:' + songMisses + ' | Accuracy:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%';
 			}
 	
 			if(cpuControlled) {
@@ -6265,13 +6299,13 @@ class PlayState extends MusicBeatState
 		else if(ClientPrefs.lang == 'Spanish/Espanol')
 		{
 			if(!ClientPrefs.classicScore) {
-				scoreTxt.text = 'Puntos: ' + songScore
+				scoreTxt.text = 'Puntos: ' + Math.floor(lerpScore)
 				+ divider + 'Precision: ' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%' + ratingFC
 				+ divider + 'Quiebres de Combo: ' + songMisses
 				+ divider + 'Rango: ' + ratingName;
 			}
 			if(ClientPrefs.classicScore) {
-				scoreTxt.text = 'Puntos:' + songScore + ' | Fallas:' + songMisses + ' | Presicion:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%';
+				scoreTxt.text = 'Puntos:' + Math.floor(lerpScore) + ' | Fallas:' + songMisses + ' | Presicion:' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%';
 			}
 	
 			if(cpuControlled) {
@@ -6291,8 +6325,8 @@ class PlayState extends MusicBeatState
 			}
 		}
 		} else {
-			if(ClientPrefs.lang == 'Spanish/Espanol') scoreTxt.text = 'Puntos: ' + songScore;
-			else scoreTxt.text = 'Score:' + songScore;
+			if(ClientPrefs.lang == 'Spanish/Espanol') scoreTxt.text = 'Puntos: ' + Math.floor(lerpScore);
+			else scoreTxt.text = 'Score:' + Math.floor(lerpScore);
 		} // prob gonna rewrite this thing so it doesnt suck lololo
 		// done for you, kinda
 	}
@@ -8583,6 +8617,8 @@ class PlayState extends MusicBeatState
 
 		if (shakeCam && boyfriend.curCharacter == 'ryan' && health > 0.4) health -= 0.01;
 
+		if ((Paths.formatToSongPath(SONG.song) == 'unfairness' || Paths.formatToSongPath(SONG.song) == 'lacuna') && ClientPrefs.mechanicsDifficulty == 'Normal') health += 0.005;
+
         switch (SONG.song.toLowerCase())
         {
 			case 'furiosity':
@@ -8675,6 +8711,26 @@ class PlayState extends MusicBeatState
      	{
 			case 'exploitation':
 
+			case 'master':
+				switch (curStep)
+				{
+					case 128:
+						defaultCamZoom = 0.7;
+					case 252 | 512:
+						defaultCamZoom = 0.4;
+						shakeCam = false;
+					case 256:
+						defaultCamZoom = 0.8;
+					case 380:
+						defaultCamZoom = 0.5;
+					case 384:
+						defaultCamZoom = 1;
+						shakeCam = true;
+					case 508:
+						defaultCamZoom = 1.2;
+					case 560:
+						FlxG.sound.play(Paths.sound('dead'), 1);
+					}
 			case 'reality breaking':
 				switch (curBeat)
 				{

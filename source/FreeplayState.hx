@@ -132,7 +132,7 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Old-Splitathon'], 12, ['splitathon-old']);
 					addWeek(['Supernovae-OG', 'Glitch-OG'], 3, ['bambiJoke']);
 				case 'joke':
-                    addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
+                    addWeek(['Supernovae', 'Glitch', 'Master', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
 					addWeek(['Roofs'], 3, ['baldi']);
 					#if !debug
 					if (FlxG.save.data.cheatingFound)
@@ -395,11 +395,11 @@ class FreeplayState extends MusicBeatState
 		}
 		if (CurrentPack == 3) {
 			switch (curSelected) {
-				case 0,1,4:
+				case 0,1,2,5:
 				songDiff.animation.play('easy', true);
-				case 3,5,6:
+				case 4,6,7:
 				songDiff.animation.play('hard', true);
-				case 2:
+				case 3:
 				songDiff.animation.play('hell', true);
 			}
 		}
