@@ -24,7 +24,8 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
         ["Bambi", [["Bambi", 'bambi'], ["Bambi (Old)", 'bambi-old'], ["Bambi (Splitathon)", 'bambi-splitathon'], ["Bambi (Angry)", 'bambi-mad']], [0, 0, 3, 0], false],
         ["Tristan", [["Tristan", 'tristan-playable']], [2, 0.5, 0.5, 0.5], false], 
         ["Drip Dave", [["Drip Dave", 'dave-drip']], [0.42, 0.69, 0.42, 0.69], true],
-        ["Expunged", [["3D Bambi", 'bambi-3d'], ["Unfair Bambi", 'bambi-unfair']], [0, 0, 0, 3], false]
+        ["Expunged", [["3D Bambi", 'bambi-3d'], ["Unfair Bambi", 'bambi-unfair']], [0, 0, 0, 3], false],
+        ["Ryan", [["Ryan", 'ryan']], [1, 1, 1, 1], false], 
     ];
     var characterSprite:Boyfriend;
     public static var characterFile:String = 'bf';

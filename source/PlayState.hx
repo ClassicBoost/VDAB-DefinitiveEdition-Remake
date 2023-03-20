@@ -7158,6 +7158,11 @@ class PlayState extends MusicBeatState
 								if(characterUnlockObj != null)
 									return;
 							}
+					case 'vs-dave-christmas': // don't know why this song but it works I guess lol.
+						stupidThing = new Boyfriend(0, 0, "ryan");
+						unlockCharacter("Ryan", "ryan", null, FlxColor.fromRGB(stupidThing.healthColorArray[0], stupidThing.healthColorArray[1], stupidThing.healthColorArray[2]));
+						if(characterUnlockObj != null)
+							return;
 				}
 
 			if (isStoryMode || isPurStoryMode)
@@ -8575,6 +8580,8 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 0.8;
 			}
 		}
+
+		if (shakeCam && boyfriend.curCharacter == 'ryan' && health > 0.4) health -= 0.01;
 
         switch (SONG.song.toLowerCase())
         {
