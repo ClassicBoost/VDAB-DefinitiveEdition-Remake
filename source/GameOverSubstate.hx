@@ -8,6 +8,7 @@ import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxEase;
+import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import purgatory.NewStoryPurgatory;
 import purgatory.PurFreeplayState;
@@ -73,10 +74,21 @@ class GameOverSubstate extends MusicBeatSubstate
 		camFollowPos.setPosition(FlxG.camera.scroll.x + (FlxG.camera.width / 2), FlxG.camera.scroll.y + (FlxG.camera.height / 2));
 		add(camFollowPos);
 
+		var blueballedTxt:FlxText = new FlxText(20, 15, 0, "", 32);
+		blueballedTxt.text = "Faints: " + PlayState.deathCounter;
+		blueballedTxt.scrollFactor.set(0,0);
+		blueballedTxt.setFormat(Paths.font('comic-sans.ttf'), 32);
+		blueballedTxt.updateHitbox();
+		add(blueballedTxt);
+
+		blueballedTxt.alpha = 0;
+
 		#if android
 		addVirtualPad(NONE, A_B);
 		addPadCamera();
 		#end
+
+		FlxTween.tween(blueballedTxt, {alpha: 1, y: blueballedTxt.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
 	}
 
 	var isFollowingAlready:Bool = false;
@@ -101,6 +113,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			FlxG.sound.music.stop();
 			PlayState.deathCounter = 0;
+			PlayState.retries = 0;
 			PlayState.seenCutscene = false;
 
 

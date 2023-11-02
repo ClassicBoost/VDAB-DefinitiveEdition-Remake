@@ -439,6 +439,7 @@ class PlayState extends MusicBeatState
 	public static var campaignMisses:Int = 0;
 	public static var seenCutscene:Bool = false;
 	public static var deathCounter:Int = 0;
+	public static var retries:Int = 0;
 
 	public var daveExpressionSplitathon:Character;
 
@@ -2262,6 +2263,7 @@ class PlayState extends MusicBeatState
 		creditsWatermark.cameras = [camHUD];
 
 		var engineDisplay:String = '${(isPixelStage == true ? "v0.3.1" : isPixelStage == false ? engineName + "Engine Legacy v0.3.1" : "")}';
+		engineDisplay += '\nAttempts: ${deathCounter + retries + 1}\n';
 
 		engineBar = new FlxText(0, 0, 0, engineDisplay); // make it go on the top right, like in Forever Engine 0.3.1
 		engineBar.setFormat(Paths.font("comic-sans.ttf"), 18, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -7035,6 +7037,7 @@ class PlayState extends MusicBeatState
 	                 	camZooming = false;
 		                inCutscene = false;
 						deathCounter = 0;
+						retries = 0;
 						seenCutscene = false;
 						updateTime = false;
 						FlxG.sound.music.volume = 0;
@@ -7134,6 +7137,7 @@ class PlayState extends MusicBeatState
 		updateTime = false;
 
 		deathCounter = 0;
+		retries = 0;
 		seenCutscene = false;
 
 
@@ -7190,11 +7194,11 @@ class PlayState extends MusicBeatState
 								if(characterUnlockObj != null)
 									return;
 							}
-					case 'vs-dave-christmas': // don't know why this song but it works I guess lol.
-						stupidThing = new Boyfriend(0, 0, "ryan");
-						unlockCharacter("Ryan", "ryan", null, FlxColor.fromRGB(stupidThing.healthColorArray[0], stupidThing.healthColorArray[1], stupidThing.healthColorArray[2]));
-						if(characterUnlockObj != null)
-							return;
+				//	case 'vs-dave-christmas': // don't know why this song but it works I guess lol.
+					//	stupidThing = new Boyfriend(0, 0, "ryan");
+					//	unlockCharacter("Ryan", "ryan", null, FlxColor.fromRGB(stupidThing.healthColorArray[0], stupidThing.healthColorArray[1], stupidThing.healthColorArray[2]));
+					//	if(characterUnlockObj != null)
+					//		return;
 				}
 
 			if (isStoryMode || isPurStoryMode)
@@ -8620,6 +8624,8 @@ class PlayState extends MusicBeatState
 
         switch (SONG.song.toLowerCase())
         {
+			case 'rascal':
+				if (curStep == 192 || curStep == 992) health = 1;
 			case 'furiosity':
 				switch (curStep)
 				{

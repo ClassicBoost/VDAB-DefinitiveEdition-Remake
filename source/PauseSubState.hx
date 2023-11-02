@@ -16,14 +16,15 @@ import flixel.FlxCamera;
 import purgatory.NewStoryPurgatory;
 import purgatory.PurFreeplayState;
 import purgatory.PurWeekData;
+import options.OptionsState;
 
 class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Exit to Options menu'#if (android), 'Chart Editor' #end, 'Exit to menu'];
-	var menuCryAbouIt:Array<String> = ['Resume', 'Restart Song', 'Exit to Options menu', 'Exit to menu'];
+	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Options'#if (android), 'Chart Editor' #end, 'Exit to menu'];
+	var menuCryAbouIt:Array<String> = ['Resume', 'Restart Song', 'Options', 'Exit to menu'];
 	var menuFuckYou:Array<String> = ['Resume', 'Restart Song'];
 	var difficultyChoices = [];
 	var curSelected:Int = 0;
@@ -95,7 +96,7 @@ class PauseSubState extends MusicBeatSubstate
 		add(levelDifficulty);
 
 		var blueballedTxt:FlxText = new FlxText(20, 15 + 64, 0, "", 32);
-		blueballedTxt.text = "Blueballed: " + PlayState.deathCounter;
+		blueballedTxt.text = "Faints: " + PlayState.deathCounter;
 		blueballedTxt.scrollFactor.set();
 		blueballedTxt.setFormat(Paths.font('comic-sans.ttf'), 32);
 		blueballedTxt.updateHitbox();
@@ -225,6 +226,7 @@ class PauseSubState extends MusicBeatSubstate
 					PlayState.changedDifficulty = true;
 					practiceText.visible = PlayState.instance.practiceMode;
 				case "Restart Song":
+					PlayState.retries++;
 					restartSong();
 				case "Leave Charting Mode":
 				    restartSong();
@@ -238,9 +240,17 @@ class PauseSubState extends MusicBeatSubstate
 				case 'Chart Editor':
 					PlayState.instance.openChartEditor();
 					PlayState.chartingMode = true;
+				case 'Options':
+					PlayState.instance.paused = true; // For lua
+					PlayState.instance.vocals.volume = 0;
+					OptionsState.onPlayState = true;
+					PlayState.retries++;
+					CustomFadeTransition.nextCamera = transCamera;
+					MusicBeatState.switchState(new options.OptionsState());
 				case "Exit to menu":
 					PlayState.deathCounter = 0;
 					PlayState.seenCutscene = false;
+					PlayState.retries = 0;
 					CustomFadeTransition.nextCamera = transCamera;
 					if(PlayState.isStoryMode) {
 						MusicBeatState.switchState(new StoryMenuState());
@@ -259,23 +269,6 @@ class PauseSubState extends MusicBeatSubstate
 						MusicBeatState.switchState(new PurFreeplayState());
 						FlxG.sound.playMusic(Paths.music('purFreakyMenu'));
 					} // @badcodeinfnfmods
-
-					PlayState.instance.practiceMode = false;
-					PlayState.changedDifficulty = false;
-					PlayState.instance.cpuControlled = false;
-					PlayState.chartingMode = false;
-				case "Exit to Options menu":
-					PlayState.deathCounter = 0;
-					PlayState.seenCutscene = false;
-					CustomFadeTransition.nextCamera = transCamera;
-					MusicBeatState.switchState(new options.OptionsState());
-					
-					if (PlayState.isFreeplayPur || PlayState.isPurStoryMode) {
-						FlxG.sound.playMusic(Paths.music('purFreakyMenu'));
-					}
-					else if (PlayState.isFreeplay || PlayState.isStoryMode) {
-						FlxG.sound.playMusic(Paths.music('freakyMenu'));
-					}
 
 					PlayState.instance.practiceMode = false;
 					PlayState.changedDifficulty = false;
