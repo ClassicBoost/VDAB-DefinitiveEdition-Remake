@@ -5449,9 +5449,12 @@ class PlayState extends MusicBeatState
 		if ((curSong.toLowerCase() == 'callback' || curSong.toLowerCase() == 'sunshine') || ClientPrefs.iconBopType == 'Gapple') {
 			iconP1.centerOffsets();
 			iconP2.centerOffsets();
-		} else {
+		} else if (ClientPrefs.iconBopType == 'Dave') {
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, CoolUtil.boundTo(1 - (elapsed * iconSmooth), 0, 1))),Std.int(FlxMath.lerp(150, iconP1.height, CoolUtil.boundTo(1 - (elapsed * iconSmooth), 0, 1))));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, CoolUtil.boundTo(1 - (elapsed * iconSmooth), 0, 1))),Std.int(FlxMath.lerp(150, iconP2.height, CoolUtil.boundTo(1 - (elapsed * iconSmooth), 0, 1))));
+		} else {
+			iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
+			iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50)));
 		}
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
@@ -5566,13 +5569,8 @@ class PlayState extends MusicBeatState
 
 		if (camZooming)
 		{
-			#if mac
-			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
-			camHUD.zoom = FlxMath.lerp(0.95, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
-			#else
-			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
-			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125), 0, 0.97));
-			#end
+			FlxG.camera.zoom = FlxMath.lerp(defaultCamZoom, FlxG.camera.zoom, 0.95);
+			camHUD.zoom = FlxMath.lerp(1, camHUD.zoom, 0.95);
 		}
 
 		FlxG.watch.addQuick("beatShit", curBeat);
@@ -7950,7 +7948,7 @@ class PlayState extends MusicBeatState
 		}
 
 		if (daNote.noteType != 'phone')
-		noteMissed();
+		noteMissed(daNote.isSustainNote);
 
 		if(char.hasMissAnimations)
 		{
@@ -7988,7 +7986,7 @@ class PlayState extends MusicBeatState
 	{
 		if (!boyfriend.stunned)
 		{
-			noteMissed();
+			noteMissed(false);
 			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
 			// FlxG.log.add('played imss note');
 
@@ -8009,14 +8007,14 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	function noteMissed() {
+	function noteMissed(?longNote:Bool = false) {
 		health -= 0.05 * healthLoss;
 		if(instakillOnMiss)
 		{
 			vocals.volume = 0;
 			doDeathCheck(true);
 		}
-
+		if (!longNote) {
 		if (combo > 10 && gf.animOffsets.exists('sad'))
 		{
 			gf.playAnim('sad');
@@ -8036,6 +8034,7 @@ class PlayState extends MusicBeatState
 		RecalculateRating();
 
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+		}
 	}
 
 	var nps:Int = 0;
@@ -8942,6 +8941,12 @@ class PlayState extends MusicBeatState
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
+		} else {
+			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
+			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
+
+			iconP1.updateHitbox();
+			iconP2.updateHitbox();
 		}
 		}
 

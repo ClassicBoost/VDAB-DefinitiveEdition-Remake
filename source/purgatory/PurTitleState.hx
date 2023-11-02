@@ -136,7 +136,7 @@ class PurTitleState extends MusicBeatState
 	}
 
 	var logoBl:FlxSprite;
-	var slidething:FlxBackdrop;
+	var slidething:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
 	var arrowshit:FlxSprite;
@@ -301,7 +301,8 @@ class PurTitleState extends MusicBeatState
 			bg.antialiasing = ClientPrefs.globalAntialiasing;
 			add(bg);
 	
-			slidething = new FlxBackdrop(Paths.image('hahaslider'),1,0,true,false);
+		//	slidething = new FlxSprite(Paths.image('hahaslider'),1,0);
+			slidething = new FlxSprite(0).loadGraphic(Paths.image('hahaslider'));
 			slidething.velocity.set(-14,0);
 			slidething.x = -20;
 			slidething.y = 209;

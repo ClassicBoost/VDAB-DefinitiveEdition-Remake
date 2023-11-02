@@ -30,11 +30,12 @@ class FPS extends TextField
 	/**
 		The current frame rate, expressed using frames-per-second
 	**/
+	var times:Array<Float> = [];
+	var memPeak:UInt = 0;
 	public var currentFPS(default, null):Int;
 
 	@:noCompletion private var cacheCount:Int;
 	@:noCompletion private var currentTime:Float;
-	@:noCompletion private var times:Array<Float>;
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
@@ -64,47 +65,60 @@ class FPS extends TextField
 		#end
 	}
 
+	static final intervalArray:Array<String> = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+	public static function getInterval(num:UInt):String
+	{
+		var size:Float = num;
+		var data = 0;
+		while (size > 1024 && data < intervalArray.length - 1)
+		{
+			data++;
+			size = size / 1024;
+		}
+
+		size = Math.round(size * 100) / 100;
+		return size + " " + intervalArray[data];
+	}
+
 	// Event Handlers
 	@:noCompletion
 	private #if !flash override #end function __enterFrame(deltaTime:Float):Void
 	{
-		currentTime += deltaTime;
-		times.push(currentTime);
+		var now:Float = Timer.stamp();
+		times.push(now);
+		while (times[0] < now - 1)
+			times.shift();
+
+		var mem = System.totalMemory;
+		if (mem > memPeak)
+			memPeak = mem;
 
 		while (times[0] < currentTime - 1000)
 		{
 			times.shift();
 		}
 
-		var currentCount = times.length;
-		currentFPS = Math.round((currentCount + cacheCount) / 2);
-		if (currentFPS > ClientPrefs.framerate) currentFPS = ClientPrefs.framerate;
-
-		if (currentCount != cacheCount /*&& visible*/)
-		{
-			text = "FPS: " + currentFPS;
-			var memoryMegas:Float = 0;
+		text = ''; // quick reset
+		text += times.length + ' FPS\n';
+		var memoryMegas:Float = 0;
 			
-			#if openfl
-			memoryMegas = Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
-			text += "\nMemory: " + memoryMegas + " mb";
-			#end
+		#if openfl
+		text += '${getInterval(mem)} / ${getInterval(memPeak)}\n';
+		#end
 
-			textColor = 0xFFFFFFFF;
-			if (memoryMegas > 3000 || currentFPS <= ClientPrefs.framerate / 2)
-			{
-				textColor = 0xFFFF0000;
-			}
-
-			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
-			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
-			text += "\nstageDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE);
-			text += "\nstage3DDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE3D);
-			#end
-
-			text += "\n";
+		textColor = 0xFFFFFFFF;
+		if (memoryMegas > 3000 || times.length <= 60) // there is kinda no reason why it should warn you if you have 50% of 240 FPS
+		{
+			textColor = 0xFFFF0000;
 		}
 
-		cacheCount = currentCount;
+		#if (gl_stats && !disable_cffi && (!html5 || !canvas))
+		text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
+		text += "\nstageDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE);
+		text += "\nstage3DDC: " + Context3DStats.contextDrawCalls(DrawCallContext.STAGE3D);
+		#end
+
+		text += "\n";
 	}
 }
